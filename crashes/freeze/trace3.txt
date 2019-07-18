@@ -1,0 +1,130 @@
+#0  0x00007fc46f3a90d1 in poll () at /usr/lib/libc.so.6
+#1  0x00007fc46f8f431b in  () at /usr/lib/libwayland-client.so.0
+#2  0x00007fc46f8f5dde in wl_display_dispatch_queue () at /usr/lib/libwayland-client.so.0
+#3  0x00007fc46f8f604c in wl_display_roundtrip_queue () at /usr/lib/libwayland-client.so.0
+#4  0x000055ef9c4f5080 in ui::WaylandBufferManagerHost::Surface::CommitBuffer(unsigned int, gfx::Rect const&) (this=0x2b5441f69770, buffer_id=<optimized out>, damage_region=...)
+    at ../../ui/ozone/platform/wayland/host/wayland_buffer_manager_host.cc:86
+        buffer = 0x2b54418e4980
+        surface = 0x2b5441f69770
+        trace_event_unique_tracer591 = {category_group_enabled_ = 0x2b5441f69770 "\240%\vET+", name_ = <optimized out>, event_handle_ = {chunk_seq = 2657228335, chunk_index = 21999, event_index = 0}}
+#5  0x000055ef9c4f5080 in ui::WaylandBufferManagerHost::CommitBuffer(int, unsigned int, gfx::Rect const&) (this=0x2b543ea28a50, widget=23, buffer_id=59, damage_region=...)
+    at ../../ui/ozone/platform/wayland/host/wayland_buffer_manager_host.cc:599
+        surface = 0x2b5441f69770
+        trace_event_unique_tracer591 = {category_group_enabled_ = 0x2b5441f69770 "\240%\vET+", name_ = <optimized out>, event_handle_ = {chunk_seq = 2657228335, chunk_index = 21999, event_index = 0}}
+#6  0x000055ef9c511241 in ui::ozone::mojom::WaylandBufferManagerHostStubDispatch::Accept(ui::ozone::mojom::WaylandBufferManagerHost*, mojo::Message*) (impl=0x2b543ea28a50, message=0x7ffdf2bced38)
+    at ./gen/ui/ozone/public/interfaces/wayland/wayland_buffer_manager.mojom.cc:558
+        context = {outer_context_ = 0x0, message_ = 0x7ffdf2bced38}
+        p_damage_region = {origin_ = {x_ = 0, y_ = 0}, size_ = {width_ = 399, height_ = 39}}
+        params = <optimized out>
+        input_data_view = {data_ = 0x27, context_ = 0x0}
+        p_buffer_id = 59
+        success = true
+        serialization_context = {handles_ = std::vector of length 0, capacity 0, associated_endpoint_handles_ = std::vector of length 0, capacity 0}
+        p_widget = 23
+#7  0x000055ef9e6a9542 in mojo::InterfaceEndpointClient::HandleValidatedMessage(mojo::Message*) (this=0x2b54403fddc0, message=0x7ffdf2bced38) at ../../mojo/public/cpp/bindings/lib/interface_endpoint_client.cc:433
+#8  0x000055ef9e6af09b in mojo::internal::MultiplexRouter::ProcessIncomingMessage(mojo::internal::MultiplexRouter::MessageWrapper*, mojo::internal::MultiplexRouter::ClientCallBehavior, base::SequencedTaskRunner*)
+    (this=0x2b543ea96e00, message_wrapper=0x7ffdf2bceee0, client_call_behavior=(unknown: 1051291696), current_task_runner=<optimized out>) at ../../mojo/public/cpp/bindings/lib/multiplex_router.cc:873
+        tmp_message = 
+          {static kFlagExpectsResponse = 1, static kFlagIsResponse = 2, static kFlagIsSync = 4, handle_ = {handle_ = {value_ = 47640893098816}}, payload_buffer_ = {message_ = {value_ = 0}, message_payload_size_ = 0, data_ = 0x2b54403ab0f8, size_ = 96, cursor_ = 96}, handles_ = std::vector of length 0, capacity 0, associated_endpoint_handles_ = std::vector of length 0, capacity 0, transferable_ = true, serialized_ = true}
+        unlocker = <optimized out>
+        message = 0x7ffdf2bceee8
+        id = <optimized out>
+        endpoint = <optimized out>
+        client = 0x2b54403fddc0
+        result = false
+#9  0x000055ef9e6aeaeb in mojo::internal::MultiplexRouter::Accept(mojo::Message*) (this=0x2b543ea96e00, message=<optimized out>) at ../../mojo/public/cpp/bindings/lib/multiplex_router.cc:594
+        message_wrapper = 
+            {router_ = 0x2b543ea96e00, value_ = {static kFlagExpectsResponse = 1, static kFlagIsResponse = 2, static kFlagIsSync = 4, handle_ = {handle_ = {value_ = 0}}, payload_buffer_ = {message_ = {value_ = 0}, message_payload_size_ = 0, data_ = 0x0, size_ = 0, cursor_ = 0}, handles_ = std::vector of length 0, capacity 0, associated_endpoint_handles_ = std::vector of length 0, capacity 0, transferable_ = false, serialized_ = false}}
+        protector = {ptr_ = 0x2b543ea96e00}
+        client_call_behavior = mojo::internal::MultiplexRouter::ALLOW_DIRECT_CLIENT_CALLS
+        locker = <optimized out>
+#10 0x000055ef9e6a7a63 in mojo::Connector::DispatchMessage(mojo::Message) (this=0x2b543ea96e60, message=...) at ../../mojo/public/cpp/bindings/lib/connector.cc:525
+        weak_self = {<base::internal::WeakPtrBase> = {ref_ = {flag_ = {ptr_ = 0x2b543eb26d70}}, ptr_ = 47640828538464}, <No data fields>}
+        dispatch_tracker = 
+                    {<base::internal::OptionalBase<mojo::Connector::ActiveDispatchTracker>> = {storage_ = {<base::internal::OptionalStorageBase<mojo::Connector::ActiveDispatchTracker, false>> = {is_populated_ = true, {empty_ = 112 'p', value_ = {connector_ = {<base::internal::WeakPtrBase> = {ref_ = {flag_ = {ptr_ = 0x2b543eb26d70}}, ptr_ = 47640828538464}, <No data fields>}, nesting_observer_ = 0x2b543ea14f60, outer_tracker_ = 0x0, inner_tracker_ = 0x0}}}, <No data fields>}}, <base::internal::CopyConstructible<false>> = {<No data fields>}, <base::internal::MoveConstructible<false>> = {<No data fields>}, <base::internal::CopyAssignable<false>> = {<No data fields>}, <base::internal::MoveAssignable<false>> = {<No data fields>}, <No data fields>}
+        trace_event_unique_tracer518 = {category_group_enabled_ = 0x0, name_ = <optimized out>, event_handle_ = {chunk_seq = 1050300416, chunk_index = 11092, event_index = 0}}
+        trace_event_unique_tracer521 = {category_group_enabled_ = 0x0, name_ = 0x7ffdf2bcf038 "pm\262>T+", event_handle_ = {chunk_seq = 29, chunk_index = 0, event_index = 0}}
+#11 0x000055ef9e6a766f in mojo::Connector::DispatchNextMessageInQueue() (this=0x2b543ea96e60) at ../../mojo/public/cpp/bindings/lib/connector.cc:555
+        message = 
+          {static kFlagExpectsResponse = 1, static kFlagIsResponse = 2, static kFlagIsSync = 4, handle_ = {handle_ = {value_ = 0}}, payload_buffer_ = {message_ = {value_ = 0}, message_payload_size_ = 0, data_ = 0x0, size_ = 0, cursor_ = 0}, handles_ = std::vector of length 0, capacity 0, associated_endpoint_handles_ = std::vector of length 0, capacity 0, transferable_ = false, serialized_ = false}
+        weak_self = {<base::internal::WeakPtrBase> = {ref_ = {flag_ = {ptr_ = 0x2b543eb26d70}}, ptr_ = 47640828538464}, <No data fields>}
+#12 0x000055ef9e5fed86 in base::OnceCallback<void ()>::Run() && (this=<optimized out>) at ../../base/callback.h:97
+        cb = {<base::internal::CallbackBase> = {bind_state_ = {ptr_ = 0x2b5444874b40}}, <No data fields>}
+        f = 0xfffffffffffffdfc
+        task_activity = 
+              {<base::debug::GlobalActivityTracker::ScopedThreadActivity> = {<base::debug::ThreadActivityTracker::ScopedActivity> = {tracker_ = 0x0, activity_id_ = 0}, user_data_ = std::unique_ptr<base::debug::ActivityUserData> = {get() = 0x0}}, <No data fields>}
+        task_backtrace = 
+            {_M_elems = {0xc001c0ded017d00d, 0x55ef9e6a834c <mojo::Connector::ReadAllAvailableMessages()+652>, 0x55ef9e6be09f <mojo::SimpleWatcher::Context::CallNotify(MojoTrapEvent const*)+223>, 0x0, 0x0, 0x0, 0xd00d1d1d178119}}
+        trace_event_unique_tracer79 = {category_group_enabled_ = 0x0, name_ = 0x55ef9a671d58 "ThreadController::Task", event_handle_ = {chunk_seq = 1050242440, chunk_index = 11092, event_index = 0}}
+        previous_pending_task = 0x0
+#13 0x000055ef9e5fed86 in base::TaskAnnotator::RunTask(char const*, base::PendingTask*) (this=<optimized out>, trace_event_name=0x55ef9a671d58 "ThreadController::Task", pending_task=0x7ffdf2bcf260)
+    at ./../../base/task/common/task_annotator.cc:114
+        task_activity = 
+              {<base::debug::GlobalActivityTracker::ScopedThreadActivity> = {<base::debug::ThreadActivityTracker::ScopedActivity> = {tracker_ = 0x0, activity_id_ = 0}, user_data_ = std::unique_ptr<base::debug::ActivityUserData> = {get() = 0x0}}, <No data fields>}
+        task_backtrace = 
+            {_M_elems = {0xc001c0ded017d00d, 0x55ef9e6a834c <mojo::Connector::ReadAllAvailableMessages()+652>, 0x55ef9e6be09f <mojo::SimpleWatcher::Context::CallNotify(MojoTrapEvent const*)+223>, 0x0, 0x0, 0x0, 0xd00d1d1d178119}}
+        trace_event_unique_tracer79 = {category_group_enabled_ = 0x0, name_ = 0x55ef9a671d58 "ThreadController::Task", event_handle_ = {chunk_seq = 1050242440, chunk_index = 11092, event_index = 0}}
+        previous_pending_task = 0x0
+#14 0x000055ef9e610b59 in base::sequence_manager::internal::ThreadControllerWithMessagePumpImpl::DoWorkImpl(base::sequence_manager::LazyNow*, bool*) (this=0x2b543e996c80, continuation_lazy_now=0x7ffdf2bcf300, ran_task=0x7ffdf2bcf31f)
+    at ./../../base/task/sequence_manager/thread_controller_with_message_pump_impl.cc:363
+        trace_event_unique_task_event362 = {context_ = 0x55ef9a5ab2d8 "../../mojo/public/cpp/bindings/lib/connector.cc"}
+        trace_event_unique_tracer362 = {category_group_enabled_ = 0x0, name_ = <optimized out>, event_handle_ = {chunk_seq = 4072469040, chunk_index = 32765, event_index = 0}}
+        trace_event_unique_task_pc_event362 = {program_counter_ = 0x55ef9e6a834c <mojo::Connector::ReadAllAvailableMessages()+652>}
+        task = 
+                    {<base::internal::OptionalBase<base::PendingTask>> = {storage_ = {<base::internal::OptionalStorageBase<base::PendingTask, false>> = {is_populated_ = true, {empty_ = 0 '\000', value_ = {task = {<base::internal::CallbackBase> = {bind_state_ = {ptr_ = 0x0}}, <No data fields>}, posted_from = {function_name_ = 0x55ef9a820828 "ReadAllAvailableMessages", file_name_ = 0x55ef9a5ab2d8 "../../mojo/public/cpp/bindings/lib/connector.cc", line_number_ = 605, program_counter_ = 0x55ef9e6a834c <mojo::Connector::ReadAllAvailableMessages()+652>}, delayed_run_time = {<base::time_internal::TimeBase<base::TimeTicks>> = {static kHoursPerDay = 24, static kSecondsPerMinute = 60, static kSecondsPerHour = 3600, static kMillisecondsPerSecond = 1000, static kMillisecondsPerDay = 86400000, static kMicrosecondsPerMillisecond = 1000, static kMicrosecondsPerSecond = 1000000, static kMicrosecondsPerMinute = 60000000, static kMicrosecondsPerHour = 3600000000, static kMicrosecondsPerDay = 86400000000, static kMicrosecondsPerWeek = 604800000000, static kNanosecondsPerMicrosecond = 1000, static kNanosecondsPerSecond = 1000000000, us_ = 1596117650}, <No data fields>}, queue_time = {<base::time_internal::TimeBase<base::TimeTicks>> = {static kHoursPerDay = 24, static kSecondsPerMinute = 60, static kSecondsPerHour = 3600, static kMillisecondsPerSecond = 1000, static kMillisecondsPerDay = 86400000, static kMicrosecondsPerMillisecond = 1000, static kMicrosecondsPerSecond = 1000000, static kMicrosecondsPerMinute = 60000000, static kMicrosecondsPerHour = 3600000000, static kMicrosecondsPerDay = 86400000000, static kMicrosecondsPerWeek = 604800000000, static kNanosecondsPerMicrosecond = 1000, static kNanosecondsPerSecond = 1000000000, us_ = 1596117650}, <No data fields>}, static kTaskBacktraceLength = 4, task_backtrace = {_M_elems = {0x55ef9e6be09f <mojo::SimpleWatcher::Context::CallNotify(MojoTrapEvent const*)+223>, 0x0, 0x0, 0x0}}, sequence_num = 32050, task_backtrace_overflow = false, nestable = base::Nestable::kNestable, is_high_res = false}}}, <No data fields>}}, <base::internal::CopyConstructible<false>> = {<No data fields>}, <base::internal::MoveConstructible<true>> = {<No data fields>}, <base::internal::CopyAssignable<false>> = {<No data fields>}, <base::internal::MoveAssignable<true>> = {<No data fields>}, <No data fields>}
+        trace_event_unique_tracer357 = {category_group_enabled_ = 0x0, name_ = 0x2b543e98d848 "8\222z\242\357U", event_handle_ = {chunk_seq = 1866154011, chunk_index = 32708, event_index = 0}}
+        i = 0
+        trace_event_unique_tracer338 = {category_group_enabled_ = 0x0, name_ = <optimized out>, event_handle_ = {chunk_seq = 2591000166, chunk_index = 21999, event_index = 0}}
+#15 0x000055ef9e61079b in base::sequence_manager::internal::ThreadControllerWithMessagePumpImpl::DoSomeWork() (this=0x2b543e996c80) at ./../../base/task/sequence_manager/thread_controller_with_message_pump_impl.cc:214
+        ran_task = false
+        continuation_lazy_now = 
+                        {tick_clock_ = 0x55efa2da81c8 <base::DefaultTickClock::GetInstance()::default_tick_clock>, now_ = {<base::internal::OptionalBase<base::TimeTicks>> = {storage_ = {<base::internal::OptionalStorageBase<base::TimeTicks, true>> = {is_populated_ = false, {empty_ = 0 '\000', value_ = {<base::time_internal::TimeBase<base::TimeTicks>> = {static kHoursPerDay = 24, static kSecondsPerMinute = 60, static kSecondsPerHour = 3600, static kMillisecondsPerSecond = 1000, static kMillisecondsPerDay = 86400000, static kMicrosecondsPerMillisecond = 1000, static kMicrosecondsPerSecond = 1000000, static kMicrosecondsPerMinute = 60000000, static kMicrosecondsPerHour = 3600000000, static kMicrosecondsPerDay = 86400000000, static kMicrosecondsPerWeek = 604800000000, static kNanosecondsPerMicrosecond = 1000, static kNanosecondsPerSecond = 1000000000, us_ = 0}, <No data fields>}}}, <No data fields>}}, <base::internal::CopyConstructible<true>> = {<No data fields>}, <base::internal::MoveConstructible<true>> = {<No data fields>}, <base::internal::CopyAssignable<true>> = {<No data fields>}, <base::internal::MoveAssignable<true>> = {<No data fields>}, <No data fields>}}
+        delay_till_next_task = <optimized out>
+#16 0x000055ef9e665bdf in base::MessagePumpLibevent::Run(base::MessagePump::Delegate*) (this=0x2b543e9bfc30, delegate=0x2b543e996c88) at ./../../base/message_loop/message_pump_libevent.cc:208
+        next_work_info = <optimized out>
+        auto_reset_in_run = {scoped_variable_ = 0x2b543e9bfc39, original_value_ = false}
+        auto_reset_keep_running = {scoped_variable_ = 0x2b543e9bfc38, original_value_ = true}
+        timer_event = std::unique_ptr<event> = {get() = 0x2b543f1e4000}
+#17 0x000055ef9e6115df in base::sequence_manager::internal::ThreadControllerWithMessagePumpImpl::Run(bool, base::TimeDelta) (this=0x2b543e996c80, application_tasks_allowed=<optimized out>, timeout=...)
+    at ./../../base/task/sequence_manager/thread_controller_with_message_pump_impl.cc:448
+        quit_runloop_after = 
+              {scoped_variable_ = 0x2b543e996d28, original_value_ = {<base::time_internal::TimeBase<base::TimeTicks>> = {static kHoursPerDay = 24, static kSecondsPerMinute = 60, static kSecondsPerHour = 3600, static kMillisecondsPerSecond = 1000, static kMillisecondsPerDay = 86400000, static kMicrosecondsPerMillisecond = 1000, static kMicrosecondsPerSecond = 1000000, static kMicrosecondsPerMinute = 60000000, static kMicrosecondsPerHour = 3600000000, static kMicrosecondsPerDay = 86400000000, static kMicrosecondsPerWeek = 604800000000, static kNanosecondsPerMicrosecond = 1000, static kNanosecondsPerSecond = 1000000000, us_ = 9223372036854775807}, <No data fields>}}
+#18 0x000055ef9e5e287f in base::RunLoop::RunWithTimeout(base::TimeDelta) (this=<optimized out>, timeout=...) at ./../../base/run_loop.cc:161
+        cancelable_timeout = 
+              {callback_ = {<base::internal::CallbackBase> = {bind_state_ = {ptr_ = 0x0}}, <No data fields>}, weak_ptr_factory_ = {<base::internal::WeakPtrFactoryBase> = {weak_reference_owner_ = {flag_ = {ptr_ = 0x2b543fcfd690}}, ptr_ = 140728675922960}, <No data fields>}}
+        run_timeout = <optimized out>
+#19 0x000055ef9e17f8c9 in ChromeBrowserMainParts::MainMessageLoopRun(int*) (this=<optimized out>, result_code=<optimized out>) at ./../../chrome/browser/chrome_browser_main.cc:1847
+        scoped_main_message_loop_run_event = {<No data fields>}
+#20 0x000055ef9ca4368e in content::BrowserMainLoop::RunMainMessageLoopParts() (this=0x2b543e9e03c0) at ./../../content/browser/browser_main_loop.cc:1009
+        ran_main_loop = false
+#21 0x000055ef9ca4368e in content::BrowserMainRunnerImpl::Run() (this=0x2b543e9fe8a0) at ./../../content/browser/browser_main_runner_impl.cc:164
+#22 0x000055ef9ca3f417 in content::BrowserMain(content::MainFunctionParams const&) (parameters=...) at ./../../content/browser/browser_main.cc:47
+        main_runner = std::unique_ptr<content::BrowserMainRunnerImpl> = {get() = 0x2b543e9fe8a0}
+        exit_code = -1
+#23 0x000055ef9e136611 in content::RunBrowserProcessMain(content::MainFunctionParams const&, content::ContentMainDelegate*) (main_function_params=..., delegate=<optimized out>) at ../../content/app/content_main_runner_impl.cc:555
+        exit_code = -1
+        process_type = ""
+        main_params = {command_line = @0x2b543e93d2d0, zygote_child = false, ui_task = 0x0, created_main_parts_closure = 0x0, startup_data = 0x2b543ea2cda0}
+        command_line = <optimized out>
+#24 0x000055ef9e136611 in content::ContentMainRunnerImpl::RunServiceManager(content::MainFunctionParams&, bool) (this=<optimized out>, main_params=..., start_service_manager_only=<optimized out>)
+    at ../../content/app/content_main_runner_impl.cc:982
+        process_type = ""
+        main_params = {command_line = @0x2b543e93d2d0, zygote_child = false, ui_task = 0x0, created_main_parts_closure = 0x0, startup_data = 0x2b543ea2cda0}
+        command_line = <optimized out>
+#25 0x000055ef9e136611 in content::ContentMainRunnerImpl::Run(bool) (this=0x2b543e941f80, start_service_manager_only=<optimized out>) at ../../content/app/content_main_runner_impl.cc:878
+        process_type = ""
+        main_params = {command_line = @0x2b543e93d2d0, zygote_child = false, ui_task = 0x0, created_main_parts_closure = 0x0, startup_data = 0x2b543ea2cda0}
+        command_line = <optimized out>
+#26 0x000055ef9e13e0ee in service_manager::Main(service_manager::MainParams const&) (params=...) at ../../services/service_manager/embedder/main.cc:415
+        is_initialized = true
+        tracker = 0x0
+        exit_code = -1
+        delegate = 0x0
+        process_type = service_manager::ProcessType::kEmbedder
+        command_line = <optimized out>
+#27 0x000055ef9e134e71 in content::ContentMain(content::ContentMainParams const&) (params=...) at ../../content/app/content_main.cc:19
+        delegate = 
+          {<service_manager::MainDelegate> = {_vptr$MainDelegate = 0x55efa280f540 <__typeid__ZTSN15service_manager12MainDelegateE_global_addr>}, content_main_params_ = {delegate = 0x7ffdf2bcfcb8, argc = 5, argv = 0x7ffdf2bcfe38, ui_task = 0x0, created_main_parts_closure = 0x0}, content_main_runner_ = std::unique_ptr<content::ContentMainRunnerImpl> = {get() = 0x2b543e941f80}, start_service_manager_only_ = false}
+        main_params = {delegate = 0x7ffdf2bcfc20, argc = 5, argv = 0x7ffdf2bcfe38}
+#28 0x000055ef9bfab84f in ChromeMain(int, char const**) (argc=5, argv=0x7ffdf2bcfe38) at ../../chrome/app/chrome_main.cc:103
+

@@ -1,0 +1,90 @@
+#0  0x000055e4345c0830 in non-virtual thunk to ui::GbmSurfacelessWayland::OnPresentation(unsigned int, gfx::PresentationFeedback const&) () at ../../base/memory/scoped_refptr.h:192
+#1  0x000055e4366b4d86 in base::OnceCallback<void ()>::Run() && (this=<optimized out>) at ../../base/callback.h:97
+        cb = {<base::internal::CallbackBase> = {bind_state_ = {ptr_ = 0x3a423ae6c300}}, <No data fields>}
+        f = 0x0
+        task_activity = 
+              {<base::debug::GlobalActivityTracker::ScopedThreadActivity> = {<base::debug::ThreadActivityTracker::ScopedActivity> = {tracker_ = 0x0, activity_id_ = 0}, user_data_ = std::unique_ptr<base::debug::ActivityUserData> = {get() = 0x0}}, <No data fields>}
+        task_backtrace = {_M_elems = {0xc001c0ded017d00d, 0x55e4345a5394 <ui::WaylandBufferManagerGpu::OnPresentation(int, unsigned int, gfx::PresentationFeedback const&)+164>, 0x0, 0x0, 0x0, 0x0, 0xd00d1d1d178119}}
+        trace_event_unique_tracer79 = {category_group_enabled_ = 0x0, name_ = 0x55e432727d58 "ThreadController::Task", event_handle_ = {chunk_seq = 971681480, chunk_index = 14914, event_index = 0}}
+        previous_pending_task = 0x0
+#2  0x000055e4366b4d86 in base::TaskAnnotator::RunTask(char const*, base::PendingTask*) (this=<optimized out>, trace_event_name=0x55e432727d58 "ThreadController::Task", pending_task=0x7ffd23008bf0)
+    at ./../../base/task/common/task_annotator.cc:114
+        task_activity = 
+              {<base::debug::GlobalActivityTracker::ScopedThreadActivity> = {<base::debug::ThreadActivityTracker::ScopedActivity> = {tracker_ = 0x0, activity_id_ = 0}, user_data_ = std::unique_ptr<base::debug::ActivityUserData> = {get() = 0x0}}, <No data fields>}
+        task_backtrace = {_M_elems = {0xc001c0ded017d00d, 0x55e4345a5394 <ui::WaylandBufferManagerGpu::OnPresentation(int, unsigned int, gfx::PresentationFeedback const&)+164>, 0x0, 0x0, 0x0, 0x0, 0xd00d1d1d178119}}
+        trace_event_unique_tracer79 = {category_group_enabled_ = 0x0, name_ = 0x55e432727d58 "ThreadController::Task", event_handle_ = {chunk_seq = 971681480, chunk_index = 14914, event_index = 0}}
+        previous_pending_task = 0x0
+#3  0x000055e4366c6b59 in base::sequence_manager::internal::ThreadControllerWithMessagePumpImpl::DoWorkImpl(base::sequence_manager::LazyNow*, bool*) (this=0x3a4239eaadc0, continuation_lazy_now=0x7ffd23008c90, ran_task=0x7ffd23008caf)
+    at ./../../base/task/sequence_manager/thread_controller_with_message_pump_impl.cc:363
+        trace_event_unique_task_event362 = {context_ = 0x55e43281ec29 "../../ui/ozone/platform/wayland/gpu/wayland_buffer_manager_gpu.cc"}
+        trace_event_unique_tracer362 = {category_group_enabled_ = 0x0, name_ = <optimized out>, event_handle_ = {chunk_seq = 10, chunk_index = 256, event_index = 0}}
+        trace_event_unique_task_pc_event362 = {program_counter_ = 0x55e4345a5394 <ui::WaylandBufferManagerGpu::OnPresentation(int, unsigned int, gfx::PresentationFeedback const&)+164>}
+        task = 
+                    {<base::internal::OptionalBase<base::PendingTask>> = {storage_ = {<base::internal::OptionalStorageBase<base::PendingTask, false>> = {is_populated_ = true, {empty_ = 0 '\000', value_ = {task = {<base::internal::CallbackBase> = {bind_state_ = {ptr_ = 0x0}}, <No data fields>}, posted_from = {function_name_ = 0x55e4326e6136 "OnPresentation", file_name_ = 0x55e43281ec29 "../../ui/ozone/platform/wayland/gpu/wayland_buffer_manager_gpu.cc", line_number_ = 76, program_counter_ = 0x55e4345a5394 <ui::WaylandBufferManagerGpu::OnPresentation(int, unsigned int, gfx::PresentationFeedback const&)+164>}, delayed_run_time = {<base::time_internal::TimeBase<base::TimeTicks>> = {static kHoursPerDay = 24, static kSecondsPerMinute = 60, static kSecondsPerHour = 3600, static kMillisecondsPerSecond = 1000, static kMillisecondsPerDay = 86400000, static kMicrosecondsPerMillisecond = 1000, static kMicrosecondsPerSecond = 1000000, static kMicrosecondsPerMinute = 60000000, static kMicrosecondsPerHour = 3600000000, static kMicrosecondsPerDay = 86400000000, static kMicrosecondsPerWeek = 604800000000, static kNanosecondsPerMicrosecond = 1000, static kNanosecondsPerSecond = 1000000000, us_ = 0}, <No data fields>}, queue_time = {<base::time_internal::TimeBase<base::TimeTicks>> = {static kHoursPerDay = 24, static kSecondsPerMinute = 60, static kSecondsPerHour = 3600, static kMillisecondsPerSecond = 1000, static kMillisecondsPerDay = 86400000, static kMicrosecondsPerMillisecond = 1000, static kMicrosecondsPerSecond = 1000000, static kMicrosecondsPerMinute = 60000000, static kMicrosecondsPerHour = 3600000000, static kMicrosecondsPerDay = 86400000000, static kMicrosecondsPerWeek = 604800000000, static kNanosecondsPerMicrosecond = 1000, static kNanosecondsPerSecond = 1000000000, us_ = 0}, <No data fields>}, static kTaskBacktraceLength = 4, task_backtrace = {_M_elems = {0x0, 0x0, 0x0, 0x0}}, sequence_num = 4511, task_backtrace_overflow = false, nestable = base::Nestable::kNestable, is_high_res = false}}}, <No data fields>}}, <base::internal::CopyConstructible<false>> = {<No data fields>}, <base::internal::MoveConstructible<true>> = {<No data fields>}, <base::internal::CopyAssignable<false>> = {<No data fields>}, <base::internal::MoveAssignable<true>> = {<No data fields>}, <No data fields>}
+        trace_event_unique_tracer357 = 
+            {category_group_enabled_ = 0x0, name_ = 0x55e43a8f7a00 <__typeid__ZTSN4base13WaitableEvent6WaiterE_global_addr> "`\355q6\344U", event_handle_ = {chunk_seq = 971816449, chunk_index = 14914, event_index = 0}}
+        i = 0
+        trace_event_unique_tracer338 = {category_group_enabled_ = 0x0, name_ = <optimized out>, event_handle_ = {chunk_seq = 0, chunk_index = 0, event_index = 0}}
+#4  0x000055e4366c679b in base::sequence_manager::internal::ThreadControllerWithMessagePumpImpl::DoSomeWork() (this=0x3a4239eaadc0) at ./../../base/task/sequence_manager/thread_controller_with_message_pump_impl.cc:214
+        ran_task = false
+        continuation_lazy_now = 
+                        {tick_clock_ = 0x55e43ae5e1c8 <base::DefaultTickClock::GetInstance()::default_tick_clock>, now_ = {<base::internal::OptionalBase<base::TimeTicks>> = {storage_ = {<base::internal::OptionalStorageBase<base::TimeTicks, true>> = {is_populated_ = false, {empty_ = 0 '\000', value_ = {<base::time_internal::TimeBase<base::TimeTicks>> = {static kHoursPerDay = 24, static kSecondsPerMinute = 60, static kSecondsPerHour = 3600, static kMillisecondsPerSecond = 1000, static kMillisecondsPerDay = 86400000, static kMicrosecondsPerMillisecond = 1000, static kMicrosecondsPerSecond = 1000000, static kMicrosecondsPerMinute = 60000000, static kMicrosecondsPerHour = 3600000000, static kMicrosecondsPerDay = 86400000000, static kMicrosecondsPerWeek = 604800000000, static kNanosecondsPerMicrosecond = 1000, static kNanosecondsPerSecond = 1000000000, us_ = 0}, <No data fields>}}}, <No data fields>}}, <base::internal::CopyConstructible<true>> = {<No data fields>}, <base::internal::MoveConstructible<true>> = {<No data fields>}, <base::internal::CopyAssignable<true>> = {<No data fields>}, <base::internal::MoveAssignable<true>> = {<No data fields>}, <No data fields>}}
+        delay_till_next_task = <optimized out>
+#5  0x000055e436674360 in base::MessagePumpDefault::Run(base::MessagePump::Delegate*) (this=0x3a4239ea4840, delegate=0x3a4239eaadc8) at ./../../base/message_loop/message_pump_default.cc:39
+        next_work_info = <optimized out>
+        auto_reset_keep_running = {scoped_variable_ = 0x3a4239ea4848, original_value_ = true}
+#6  0x000055e4366c75df in base::sequence_manager::internal::ThreadControllerWithMessagePumpImpl::Run(bool, base::TimeDelta) (this=0x3a4239eaadc0, application_tasks_allowed=<optimized out>, timeout=...)
+    at ./../../base/task/sequence_manager/thread_controller_with_message_pump_impl.cc:448
+        quit_runloop_after = 
+              {scoped_variable_ = 0x3a4239eaae68, original_value_ = {<base::time_internal::TimeBase<base::TimeTicks>> = {static kHoursPerDay = 24, static kSecondsPerMinute = 60, static kSecondsPerHour = 3600, static kMillisecondsPerSecond = 1000, static kMillisecondsPerDay = 86400000, static kMicrosecondsPerMillisecond = 1000, static kMicrosecondsPerSecond = 1000000, static kMicrosecondsPerMinute = 60000000, static kMicrosecondsPerHour = 3600000000, static kMicrosecondsPerDay = 86400000000, static kMicrosecondsPerWeek = 604800000000, static kNanosecondsPerMicrosecond = 1000, static kNanosecondsPerSecond = 1000000000, us_ = 9223372036854775807}, <No data fields>}}
+#7  0x000055e43669887f in base::RunLoop::RunWithTimeout(base::TimeDelta) (this=<optimized out>, timeout=...) at ./../../base/run_loop.cc:161
+        cancelable_timeout = 
+              {callback_ = {<base::internal::CallbackBase> = {bind_state_ = {ptr_ = 0x0}}, <No data fields>}, weak_ptr_factory_ = {<base::internal::WeakPtrFactoryBase> = {weak_reference_owner_ = {flag_ = {ptr_ = 0x3a4239e7b760}}, ptr_ = 140725190692240}, <No data fields>}}
+        run_timeout = <optimized out>
+#8  0x000055e43a2ddbf4 in content::GpuMain(content::MainFunctionParams const&) (parameters=...) at ./../../content/gpu/gpu_main.cc:358
+        trace_event_unique_tracer357 = {category_group_enabled_ = 0x0, name_ = <synthetic pointer>, event_handle_ = {chunk_seq = <synthetic pointer>, chunk_index = 0, event_index = 0}}
+        gpu_preferences = 
+          {disable_accelerated_video_decode = false, disable_accelerated_video_encode = false, gpu_startup_dialog = false, disable_gpu_watchdog = false, gpu_sandbox_start_early = false, enable_accelerated_vpx_decode = gpu::GpuPreferences::VPX_VENDOR_MICROSOFT, enable_low_latency_dxva = true, enable_zero_copy_dxgi_video = false, enable_nv12_dxgi_video = false, enable_media_foundation_vea_on_windows7 = false, disable_software_rasterizer = false, log_gpu_control_list_decisions = false, compile_shader_always_succeeds = false, disable_gl_error_limit = false, disable_glsl_translator = false, disable_shader_name_hashing = false, enable_gpu_command_logging = false, enable_gpu_debugging = false, enable_gpu_service_logging_gpu = false, enable_gpu_driver_debug_logging = false, disable_gpu_program_cache = false, enforce_gl_minimums = false, force_gpu_mem_available = 0, gpu_program_cache_size = 6291456, disable_gpu_shader_disk_cache = false, enable_threaded_texture_mailboxes = false, gl_shader_interm_output = false, emulate_shader_precision = false, max_active_webgl_contexts = 0, enable_android_surface_control = false, enable_gpu_service_logging = false, enable_gpu_service_tracing = false, use_passthrough_cmd_decoder = false, disable_biplanar_gpu_memory_buffers_for_video_frames = false, texture_target_exception_list = std::vector of length 7, capacity 8 = {{usage = gfx::BufferUsage::GPU_READ, format = gfx::BufferFormat::BGR_565}, {usage = gfx::BufferUsage::GPU_READ, format = gfx::BufferFormat::YVU_420}, {usage = gfx::BufferUsage::SCANOUT_CAMERA_READ_WRITE, format = gfx::BufferFormat::YUV_420_BIPLANAR}, {usage = gfx::BufferUsage::SCANOUT_CPU_READ_WRITE, format = gfx::BufferFormat::BGRX_1010102}, {usage = gfx::BufferUsage::SCANOUT_CPU_READ_WRITE, format = gfx::BufferFormat::RGBX_1010102}, {usage = gfx::BufferUsage::SCANOUT_CPU_READ_WRITE, format = gfx::BufferFormat::YUV_420_BIPLANAR}, {usage = gfx::BufferUsage::GPU_READ_CPU_READ_WRITE, format = gfx::BufferFormat::YUV_420_BIPLANAR}}, disable_gpu_driver_bug_workarounds = false, ignore_gpu_blacklist = true, enable_oop_rasterization = false, disable_oop_rasterization = false, enable_oop_rasterization_ddl = false, watchdog_starts_backgrounded = false, enable_vulkan = false, disable_vulkan_surface = false, disable_vulkan_fallback_to_gl_for_testing = false, enable_gpu_benchmarking_extension = false, enable_webgpu = false}
+        start_time = 
+          {<base::time_internal::TimeBase<base::Time>> = {static kHoursPerDay = 24, static kSecondsPerMinute = 60, static kSecondsPerHour = 3600, static kMillisecondsPerSecond = 1000, static kMillisecondsPerDay = 86400000, static kMicrosecondsPerMillisecond = 1000, static kMicrosecondsPerSecond = 1000000, static kMicrosecondsPerMinute = 60000000, static kMicrosecondsPerHour = 3600000000, static kMicrosecondsPerDay = 86400000000, static kMicrosecondsPerWeek = 604800000000, static kNanosecondsPerMicrosecond = 1000, static kNanosecondsPerSecond = 1000000000, us_ = 13205046169513590}, static kTimeTToMicrosecondsOffset = 11644473600000000, static kExplodedMinYear = -2147483648, static kExplodedMaxYear = 2147483647}
+        sandbox_helper = warning: can't find linker symbol for virtual table for `content::(anonymous namespace)::ContentSandboxHelper' value
+{<gpu::GpuSandboxHelper> = {_vptr$GpuSandboxHelper = 0x55e43a980620 <_ZTVN7content12_GLOBAL__N_120ContentSandboxHelperE$9b357c26bf86a82ab852ade4c4a160c0+16>}, <No data fields>}
+        gpu_process = 
+            {<content::ChildProcess> = {_vptr$ChildProcess = 0x55e43a8f4400 <vtable for content::GpuProcess+16>, ref_count_ = 0, shutdown_event_ = {kernel_ = {ptr_ = 0x3a423a119820}, waiting_is_blocking_ = true}, io_thread_ = {<base::PlatformThread::Delegate> = {_vptr$Delegate = 0x55e43a939bd0 <vtable for base::Thread+16>}, joinable_ = true, stopping_ = false, running_ = true, running_lock_ = {lock_ = {native_handle_ = {__data = {__lock = 0, __count = 0, __owner = 0, __nusers = 0, __kind = 0, __spins = 0, __elision = 0, __list = {__prev = 0x0, __next = 0x0}}, __size = '\000' <repeats 39 times>, __align = 0}}}, thread_ = {handle_ = 140411694995200}, thread_lock_ = {lock_ = {native_handle_ = {__data = {__lock = 0, __count = 0, __owner = 0, __nusers = 0, __kind = 0, __spins = 0, __elision = 0, __list = {__prev = 0x0, __next = 0x0}}, __size = '\000' <repeats 39 times>, __align = 0}}}, id_ = 14836, id_event_ = {kernel_ = {ptr_ = 0x3a423a119730}, waiting_is_blocking_ = true}, task_environment_ = std::unique_ptr<base::Thread::TaskEnvironment> = {get() = 0x3a4239e7be20}, run_loop_ = 0x7fb42533c758, timer_slack_ = base::TIMER_SLACK_NONE, name_ = "Chrome_ChildIOThread", start_event_ = {kernel_ = {ptr_ = 0x3a423a1197d0}, waiting_is_blocking_ = true}, owning_sequence_checker_ = {<base::SequenceCheckerDoNothing> = {<No data fields>}, <No data fields>}}, main_thread_ = std::unique_ptr<content::ChildThreadImpl> = {get() = 0x3a423a1bd000}, initialized_thread_pool_ = true}, <No data fields>}
+        run_loop = 
+              {delegate_ = 0x3a4239eaadd0, type_ = base::RunLoop::Type::kDefault, quit_called_ = false, running_ = true, quit_when_idle_received_ = false, allow_quit_current_deprecated_ = false, origin_task_runner_ = {ptr_ = 0x3a4239e2a390}, weak_factory_ = {<base::internal::WeakPtrFactoryBase> = {weak_reference_owner_ = {flag_ = {ptr_ = 0x3a4239e29060}}, ptr_ = 140725190692472}, <No data fields>}}
+        tracing_sampler_profiler = std::unique_ptr<tracing::TracingSamplerProfiler> = {get() = 0x3a423a1f2480}
+        hi_res_timer_manager = {<base::PowerObserver> = {_vptr$PowerObserver = 0x55e43a85f200 <vtable for base::HighResolutionTimerManager+16>}, hi_res_clock_available_ = false}
+        trace_event_unique_tracer198 = {category_group_enabled_ = 0x0, name_ = <optimized out>, event_handle_ = {chunk_seq = 587239184, chunk_index = 32765, event_index = 0}}
+        command_line = <optimized out>
+        event_source = std::unique_ptr<ui::PlatformEventSource> = {get() = 0x0}
+        main_message_loop = std::unique_ptr<base::MessageLoop> = {get() = 0x3a4239e4e740}
+        gpu_init = std::unique_ptr<gpu::GpuInit> = {get() = 0x0}
+        io_thread_priority = base::ThreadPriority::DISPLAY
+        client = <optimized out>
+        child_thread = 0x3a423a1bd000
+#9  0x000055e4361ebc38 in content::RunOtherNamedProcessTypeMain(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, content::MainFunctionParams const&, content::ContentMainDelegate*)
+    (process_type=<error: Cannot access memory at address 0x636f72702d757067>, main_function_params=..., delegate=<optimized out>) at ../../content/app/content_main_runner_impl.cc:581
+        exit_code = -1
+        i = 4
+        process_type = "gpu-process"
+        main_params = {command_line = @0x3a4239e512d0, zygote_child = false, ui_task = 0x0, created_main_parts_closure = 0x0, startup_data = 0x0}
+        command_line = <optimized out>
+#10 0x000055e4361ebc38 in content::ContentMainRunnerImpl::Run(bool) (this=0x3a4239e55f80, start_service_manager_only=<optimized out>) at ../../content/app/content_main_runner_impl.cc:881
+        process_type = "gpu-process"
+        main_params = {command_line = @0x3a4239e512d0, zygote_child = false, ui_task = 0x0, created_main_parts_closure = 0x0, startup_data = 0x0}
+        command_line = <optimized out>
+#11 0x000055e4361f40ee in service_manager::Main(service_manager::MainParams const&) (params=...) at ../../services/service_manager/embedder/main.cc:415
+        is_initialized = true
+        tracker = 0x0
+        exit_code = -1
+        delegate = 0x0
+        process_type = service_manager::ProcessType::kEmbedder
+        command_line = <optimized out>
+#12 0x000055e4361eae71 in content::ContentMain(content::ContentMainParams const&) (params=...) at ../../content/app/content_main.cc:19
+        delegate = 
+          {<service_manager::MainDelegate> = {_vptr$MainDelegate = 0x55e43a8c5540 <__typeid__ZTSN15service_manager12MainDelegateE_global_addr>}, content_main_params_ = {delegate = 0x7ffd230097f8, argc = 7, argv = 0x7ffd23009978, ui_task = 0x0, created_main_parts_closure = 0x0}, content_main_runner_ = std::unique_ptr<content::ContentMainRunnerImpl> = {get() = 0x3a4239e55f80}, start_service_manager_only_ = false}
+        main_params = {delegate = 0x7ffd23009760, argc = 7, argv = 0x7ffd23009978}
+#13 0x000055e43406184f in ChromeMain(int, char const**) (argc=7, argv=0x7ffd23009978) at ../../chrome/app/chrome_main.cc:103
+
+

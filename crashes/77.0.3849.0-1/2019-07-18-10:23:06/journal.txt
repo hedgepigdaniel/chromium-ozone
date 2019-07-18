@@ -1,0 +1,962 @@
+Jul 18 10:23:06 danielpc-arch audit[20509]: ANOM_ABEND auid=1000 uid=1000 gid=1000 ses=1 pid=20509 comm="chromium" exe="/usr/lib/chromium/chromium" sig=11 res=1
+Jul 18 10:23:06 danielpc-arch kernel: chromium[20509]: segfault at 0 ip 00007f45b50cf361 sp 00007ffc2ded75f0 error 6 in libstdc++.so.6.0.26[7f45b5022000+f8000]
+Jul 18 10:23:06 danielpc-arch kernel: Code: 2f 4c 8d 77 10 4c 8b 66 08 48 89 fb 48 89 f5 4d 39 ee 0f 84 a1 00 00 00 48 8b 57 10 4c 39 e2 72 58 4d 85 e4 75 33 4c 89 63 08 <43> c6 44 25 00 00 48 8b 44 24 08 64 48 33 04 25 28 00 00 00 0f 85
+Jul 18 10:23:06 danielpc-arch kernel: audit: type=1701 audit(1563409386.605:120): auid=1000 uid=1000 gid=1000 ses=1 pid=20509 comm="chromium" exe="/usr/lib/chromium/chromium" sig=11 res=1
+Jul 18 10:23:06 danielpc-arch systemd[1]: Started Process Core Dump (PID 20897/UID 0).
+Jul 18 10:23:06 danielpc-arch audit[1]: SERVICE_START pid=1 uid=0 auid=4294967295 ses=4294967295 msg='unit=systemd-coredump@21-20897-0 comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+Jul 18 10:23:06 danielpc-arch kernel: audit: type=1130 audit(1563409386.625:121): pid=1 uid=0 auid=4294967295 ses=4294967295 msg='unit=systemd-coredump@21-20897-0 comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+Jul 18 10:23:11 danielpc-arch systemd-coredump[20901]: Process 20509 (chromium) of user 1000 dumped core.
+
+                                                       Stack trace of thread 1:
+                                                       #0  0x00007f45b50cf361 _ZNSt11char_traitsIcE6assignERcRKc (libstdc++.so.6)
+                                                       #1  0x000056543c1281af _ZN5blink12FontCacheKeyaSERKS0_ (chromium)
+                                                       #2  0x000056543c39d7fc _ZN5blink20CSSSegmentedFontFace11GetFontDataERKNS_15FontDescriptionE (chromium)
+                                                       #3  0x000056543c39d3ad _ZN5blink15CSSFontSelector11GetFontDataERKNS_15FontDescriptionERKN3WTF12AtomicStringE (chromium)
+                                                       #4  0x000056543c17817e _ZNK5blink16FontFallbackList10FontDataAtERKNS_15FontDescriptionEj (chromium)
+                                                       #5  0x000056543c1788fe _ZNK5blink16FontFallbackList30DeterminePrimarySimpleFontDataERKNS_15FontDescriptionE (chromium)
+                                                       #6  0x000056543cd87a07 _ZNK5blink13ComputedStyle18ComputedLineHeightEv (chromium)
+                                                       #7  0x000056543c84a697 _ZN5blink29TextControlInnerEditorElement26CustomStyleForLayoutObjectEv (chromium)
+                                                       #8  0x000056543c532522 _ZN5blink7Element20StyleForLayoutObjectEb (chromium)
+                                                       #9  0x000056543c4eb949 _ZN5blink7Element11RecalcStyleENS_17StyleRecalcChangeE (chromium)
+                                                       #10 0x000056543c4eb6a5 _ZN5blink13ContainerNode22RecalcDescendantStylesENS_17StyleRecalcChangeE (chromium)
+                                                       #11 0x000056543c58cadf _ZN5blink10ShadowRoot11RecalcStyleENS_17StyleRecalcChangeE (chromium)
+                                                       #12 0x000056543c4ec3a6 _ZN5blink7Element11RecalcStyleENS_17StyleRecalcChangeE (chromium)
+                                                       #13 0x000056543c4ebcd5 _ZN5blink7Element11RecalcStyleENS_17StyleRecalcChangeE (chromium)
+                                                       #14 0x000056543c4ebcd5 _ZN5blink7Element11RecalcStyleENS_17StyleRecalcChangeE (chromium)
+                                                       #15 0x000056543c4ebcd5 _ZN5blink7Element11RecalcStyleENS_17StyleRecalcChangeE (chromium)
+                                                       #16 0x000056543c4ebcd5 _ZN5blink7Element11RecalcStyleENS_17StyleRecalcChangeE (chromium)
+                                                       #17 0x000056543c4ebcd5 _ZN5blink7Element11RecalcStyleENS_17StyleRecalcChangeE (chromium)
+                                                       #18 0x000056543c4b99ae _ZN5blink11StyleEngine11RecalcStyleENS_17StyleRecalcChangeE (chromium)
+                                                       #19 0x000056543c4fbcc5 _ZN5blink8Document24UpdateStyleAndLayoutTreeEv (chromium)
+                                                       #20 0x000056543c73c854 _ZN5blink14LocalFrameView37UpdateStyleAndLayoutIfNeededRecursiveEv (chromium)
+                                                       #21 0x000056543c73afa7 _ZN5blink14LocalFrameView21UpdateLifecyclePhasesENS_17DocumentLifecycle14LifecycleStateENS1_21LifecycleUpdateReasonE (chromium)
+                                                       #22 0x000056543cc5446b _ZN5blink18PageWidgetDelegate15UpdateLifecycleERNS_4PageERNS_10LocalFrameENS_9WebWidget15LifecycleUpdateENS5_21LifecycleUpdateReasonE (chromium)
+                                                       #23 0x000056543c6ba067 _ZN5blink11WebViewImpl15UpdateLifecycleENS_9WebWidget15LifecycleUpdateENS1_21LifecycleUpdateReasonE (chromium)
+                                                       #24 0x000056543d941c07 _ZN7content12RenderWidget17UpdateVisualStateEv (chromium)
+                                                       #25 0x000056543a5d5798 _ZN2cc9ProxyMain14BeginMainFrameESt10unique_ptrINS_28BeginMainFrameAndCommitStateESt14default_deleteIS2_EE (chromium)
+                                                       #26 0x000056543a5ebdbe _ZN4base8internal7InvokerINS0_9BindStateIMN2cc9ProxyMainEFvSt10unique_ptrINS3_28BeginMainFrameAndCommitStateESt14default_deleteIS6_EEEJNS_7WeakPtrIS4_EENS0_13PassedWrapperIS9_EEEEEFvvEE7RunOnceEPNS0_13BindStateBaseE.cfi (chromium)
+                                                       #27 0x0000565439658e37 _ZN4base13TaskAnnotator7RunTaskEPKcPNS_11PendingTaskE (chromium)
+                                                       #28 0x0000565439669f24 _ZN4base16sequence_manager8internal35ThreadControllerWithMessagePumpImpl10DoWorkImplEPNS0_7LazyNowEPb (chromium)
+                                                       #29 0x0000565439669b7b _ZN4base16sequence_manager8internal35ThreadControllerWithMessagePumpImpl10DoSomeWorkEv (chromium)
+                                                       #30 0x0000565439619355 _ZN4base18MessagePumpDefault3RunEPNS_11MessagePump8DelegateE (chromium)
+                                                       #31 0x000056543966a85f _ZN4base16sequence_manager8internal35ThreadControllerWithMessagePumpImpl3RunEbNS_9TimeDeltaE (chromium)
+                                                       #32 0x000056543963e2b6 _ZN4base7RunLoop14RunWithTimeoutENS_9TimeDeltaE (chromium)
+                                                       #33 0x000056543d94c047 _ZN7content12RendererMainERKNS_18MainFunctionParamsE.cfi (chromium)
+                                                       #34 0x000056543916ebe1 _ZN7content21ContentMainRunnerImpl3RunEb (chromium)
+                                                       #35 0x0000565439195fe6 _ZN15service_manager4MainERKNS_10MainParamsE (chromium)
+                                                       #36 0x000056543916cd41 _ZN7content11ContentMainERKNS_17ContentMainParamsE (chromium)
+                                                       #37 0x0000565436e4c44e ChromeMain (chromium)
+                                                       #38 0x00007f45b4dd6ee3 __libc_start_main (libc.so.6)
+                                                       #39 0x0000565436c3502e _start (chromium)
+
+                                                       Stack trace of thread 2:
+                                                       #0  0x00007f45b4eac41e epoll_wait (libc.so.6)
+                                                       #1  0x000056543972a60b epoll_dispatch$fa565fa3c1e953c9ae4ecee0ae4a3ca0.cfi (chromium)
+                                                       #2  0x0000565439727da6 event_base_loop (chromium)
+                                                       #3  0x00005654396c3125 _ZN4base19MessagePumpLibevent3RunEPNS_11MessagePump8DelegateE (chromium)
+                                                       #4  0x000056543966a85f _ZN4base16sequence_manager8internal35ThreadControllerWithMessagePumpImpl3RunEbNS_9TimeDeltaE (chromium)
+                                                       #5  0x000056543963e2b6 _ZN4base7RunLoop14RunWithTimeoutENS_9TimeDeltaE (chromium)
+                                                       #6  0x000056543966e9d4 _ZN4base8internal13ServiceThread3RunEPNS_7RunLoopE (chromium)
+                                                       #7  0x000056543967f4bd _ZN4base6Thread10ThreadMainEv (chromium)
+                                                       #8  0x00005654396c62f8 _ZN4base12_GLOBAL__N_110ThreadFuncEPv$d057525a39469bd043963c96d8725723.cfi (chromium)
+                                                       #9  0x00007f45b7f1e57f start_thread (libpthread.so.0)
+                                                       #10 0x00007f45b4eac0e3 __clone (libc.so.6)
+
+                                                       Stack trace of thread 6:
+                                                       #0  0x00007f45b7f2477c pthread_cond_timedwait@@GLIBC_2.3.2 (libpthread.so.0)
+                                                       #1  0x00005654396ba55b _ZN4base17ConditionVariable9TimedWaitERKNS_9TimeDeltaE (chromium)
+                                                       #2  0x00005654396bab4d _ZN4base13WaitableEvent14TimedWaitUntilERKNS_9TimeTicksE (chromium)
+                                                       #3  0x00005654396badae _ZN4base13WaitableEvent9TimedWaitERKNS_9TimeDeltaE (chromium)
+                                                       #4  0x000056543967839e _ZN4base8internal12WorkerThread9RunWorkerEv (chromium)
+                                                       #5  0x0000565439677bb1 _ZN4base8internal12WorkerThread15RunPooledWorkerEv (chromium)
+                                                       #6  0x00005654396c62f8 _ZN4base12_GLOBAL__N_110ThreadFuncEPv$d057525a39469bd043963c96d8725723.cfi (chromium)
+                                                       #7  0x00007f45b7f1e57f start_thread (libpthread.so.0)
+                                                       #8  0x00007f45b4eac0e3 __clone (libc.so.6)
+
+                                                       Stack trace of thread 4:
+                                                       #0  0x000056543daf2b7a tc_memalign (chromium)
+                                                       #1  0x00005654396be1ad posix_memalign (chromium)
+                                                       #2  0x000056543960ee39 _ZN4base12AlignedAllocEmm (chromium)
+                                                       #3  0x00005654376733cf _ZN4mojo4core7Channel7MessageC2Emm (chromium)
+                                                       #4  0x00005654376837f0 _ZN4mojo4core11NodeChannel16OnChannelMessageEPKvmSt6vectorINS_14PlatformHandleESaIS5_EE (chromium)
+                                                       #5  0x0000565437673ffa _ZN4mojo4core7Channel14OnReadCompleteEmPm (chromium)
+                                                       #6  0x0000565437695295 _ZN4mojo4core12_GLOBAL__N_112ChannelPosix28OnFileCanReadWithoutBlockingEi$cb994357f6f1dc3c7e6a878e001f6e8c (chromium)
+                                                       #7  0x00005654396c2c5c _ZN4base19MessagePumpLibevent22OnLibeventNotificationEisPv.cfi (chromium)
+                                                       #8  0x0000565439728094 event_base_loop (chromium)
+                                                       #9  0x00005654396c306e _ZN4base19MessagePumpLibevent3RunEPNS_11MessagePump8DelegateE (chromium)
+                                                       #10 0x000056543966a85f _ZN4base16sequence_manager8internal35ThreadControllerWithMessagePumpImpl3RunEbNS_9TimeDeltaE (chromium)
+                                                       #11 0x000056543963e2b6 _ZN4base7RunLoop14RunWithTimeoutENS_9TimeDeltaE (chromium)
+                                                       #12 0x000056543967f4bd _ZN4base6Thread10ThreadMainEv (chromium)
+                                                       #13 0x00005654396c62f8 _ZN4base12_GLOBAL__N_110ThreadFuncEPv$d057525a39469bd043963c96d8725723.cfi (chromium)
+                                                       #14 0x00007f45b7f1e57f start_thread (libpthread.so.0)
+                                                       #15 0x00007f45b4eac0e3 __clone (libc.so.6)
+
+                                                       Stack trace of thread 7:
+                                                       #0  0x00007f45b7f2477c pthread_cond_timedwait@@GLIBC_2.3.2 (libpthread.so.0)
+                                                       #1  0x00005654396ba55b _ZN4base17ConditionVariable9TimedWaitERKNS_9TimeDeltaE (chromium)
+                                                       #2  0x00005654396bab4d _ZN4base13WaitableEvent14TimedWaitUntilERKNS_9TimeTicksE (chromium)
+                                                       #3  0x00005654396badae _ZN4base13WaitableEvent9TimedWaitERKNS_9TimeDeltaE (chromium)
+                                                       #4  0x00005654396193ac _ZN4base18MessagePumpDefault3RunEPNS_11MessagePump8DelegateE (chromium)
+                                                       #5  0x000056543966a85f _ZN4base16sequence_manager8internal35ThreadControllerWithMessagePumpImpl3RunEbNS_9TimeDeltaE (chromium)
+                                                       #6  0x000056543963e2b6 _ZN4base7RunLoop14RunWithTimeoutENS_9TimeDeltaE (chromium)
+                                                       #7  0x0000565438d28a6f _ZN5blink9scheduler12WorkerThread16SimpleThreadImpl3RunEv (chromium)
+                                                       #8  0x00005654396c62f8 _ZN4base12_GLOBAL__N_110ThreadFuncEPv$d057525a39469bd043963c96d8725723.cfi (chromium)
+                                                       #9  0x00007f45b7f1e57f start_thread (libpthread.so.0)
+                                                       #10 0x00007f45b4eac0e3 __clone (libc.so.6)
+
+                                                       Stack trace of thread 9:
+                                                       #0  0x00007f45b7f24415 pthread_cond_wait@@GLIBC_2.3.2 (libpthread.so.0)
+                                                       #1  0x00005654396bad2b _ZN4base13WaitableEvent14TimedWaitUntilERKNS_9TimeTicksE (chromium)
+                                                       #2  0x00005654396b008c _ZN4base13WaitableEvent4WaitEv (chromium)
+                                                       #3  0x0000565437fbcd45 _ZN3viz28ClientGpuMemoryBufferManager21CreateGpuMemoryBufferERKN3gfx4SizeENS1_12BufferFormatENS1_11BufferUsageEi (chromium)
+                                                       #4  0x000056543a541719 _ZN2cc27OneCopyRasterBufferProvider16RasterBufferImpl8PlaybackEPKNS_12RasterSourceERKN3gfx4RectES8_mRKNS5_15AxisTransform2dERKNS2_16PlaybackSettingsERK4GURL (chromium)
+                                                       #5  0x000056543a5dfc18 _ZN2cc12_GLOBAL__N_114RasterTaskImpl17RunOnWorkerThreadEv$a8017904ec7350a204003a67e56d73fe (chromium)
+                                                       #6  0x000056543d6e24f7 _ZN7content12_GLOBAL__N_127CategorizedWorkerPoolThread3RunEv$29e7a6ad373e24401f65edfd080197ab (chromium)
+                                                       #7  0x00005654396c62f8 _ZN4base12_GLOBAL__N_110ThreadFuncEPv$d057525a39469bd043963c96d8725723.cfi (chromium)
+                                                       #8  0x00007f45b7f1e57f start_thread (libpthread.so.0)
+                                                       #9  0x00007f45b4eac0e3 __clone (libc.so.6)
+
+                                                       Stack trace of thread 10:
+                                                       #0  0x00007f45b7f24415 pthread_cond_wait@@GLIBC_2.3.2 (libpthread.so.0)
+                                                       #1  0x00005654396bad2b _ZN4base13WaitableEvent14TimedWaitUntilERKNS_9TimeTicksE (chromium)
+                                                       #2  0x00005654396b008c _ZN4base13WaitableEvent4WaitEv (chromium)
+                                                       #3  0x0000565437fbcd45 _ZN3viz28ClientGpuMemoryBufferManager21CreateGpuMemoryBufferERKN3gfx4SizeENS1_12BufferFormatENS1_11BufferUsageEi (chromium)
+                                                       #4  0x000056543a541719 _ZN2cc27OneCopyRasterBufferProvider16RasterBufferImpl8PlaybackEPKNS_12RasterSourceERKN3gfx4RectES8_mRKNS5_15AxisTransform2dERKNS2_16PlaybackSettingsERK4GURL (chromium)
+                                                       #5  0x000056543a5dfc18 _ZN2cc12_GLOBAL__N_114RasterTaskImpl17RunOnWorkerThreadEv$a8017904ec7350a204003a67e56d73fe (chromium)
+                                                       #6  0x000056543d6e24f7 _ZN7content12_GLOBAL__N_127CategorizedWorkerPoolThread3RunEv$29e7a6ad373e24401f65edfd080197ab (chromium)
+                                                       #7  0x00005654396c62f8 _ZN4base12_GLOBAL__N_110ThreadFuncEPv$d057525a39469bd043963c96d8725723.cfi (chromium)
+                                                       #8  0x00007f45b7f1e57f start_thread (libpthread.so.0)
+                                                       #9  0x00007f45b4eac0e3 __clone (libc.so.6)
+
+                                                       Stack trace of thread 11:
+                                                       #0  0x00007f45b7f24415 pthread_cond_wait@@GLIBC_2.3.2 (libpthread.so.0)
+                                                       #1  0x00005654396bad2b _ZN4base13WaitableEvent14TimedWaitUntilERKNS_9TimeTicksE (chromium)
+                                                       #2  0x00005654396b008c _ZN4base13WaitableEvent4WaitEv (chromium)
+                                                       #3  0x0000565437fbcd45 _ZN3viz28ClientGpuMemoryBufferManager21CreateGpuMemoryBufferERKN3gfx4SizeENS1_12BufferFormatENS1_11BufferUsageEi (chromium)
+                                                       #4  0x000056543a541719 _ZN2cc27OneCopyRasterBufferProvider16RasterBufferImpl8PlaybackEPKNS_12RasterSourceERKN3gfx4RectES8_mRKNS5_15AxisTransform2dERKNS2_16PlaybackSettingsERK4GURL (chromium)
+                                                       #5  0x000056543a5dfc18 _ZN2cc12_GLOBAL__N_114RasterTaskImpl17RunOnWorkerThreadEv$a8017904ec7350a204003a67e56d73fe (chromium)
+                                                       #6  0x000056543d6e24f7 _ZN7content12_GLOBAL__N_127CategorizedWorkerPoolThread3RunEv$29e7a6ad373e24401f65edfd080197ab (chromium)
+                                                       #7  0x00005654396c62f8 _ZN4base12_GLOBAL__N_110ThreadFuncEPv$d057525a39469bd043963c96d8725723.cfi (chromium)
+                                                       #8  0x00007f45b7f1e57f start_thread (libpthread.so.0)
+                                                       #9  0x00007f45b4eac0e3 __clone (libc.so.6)
+
+                                                       Stack trace of thread 8:
+                                                       #0  0x00007f45b7f24415 pthread_cond_wait@@GLIBC_2.3.2 (libpthread.so.0)
+                                                       #1  0x00005654396bad2b _ZN4base13WaitableEvent14TimedWaitUntilERKNS_9TimeTicksE (chromium)
+                                                       #2  0x00005654396b008c _ZN4base13WaitableEvent4WaitEv (chromium)
+                                                       #3  0x0000565437fbcd45 _ZN3viz28ClientGpuMemoryBufferManager21CreateGpuMemoryBufferERKN3gfx4SizeENS1_12BufferFormatENS1_11BufferUsageEi (chromium)
+                                                       #4  0x000056543a541719 _ZN2cc27OneCopyRasterBufferProvider16RasterBufferImpl8PlaybackEPKNS_12RasterSourceERKN3gfx4RectES8_mRKNS5_15AxisTransform2dERKNS2_16PlaybackSettingsERK4GURL (chromium)
+                                                       #5  0x000056543a5dfc18 _ZN2cc12_GLOBAL__N_114RasterTaskImpl17RunOnWorkerThreadEv$a8017904ec7350a204003a67e56d73fe (chromium)
+                                                       #6  0x000056543d6e24f7 _ZN7content12_GLOBAL__N_127CategorizedWorkerPoolThread3RunEv$29e7a6ad373e24401f65edfd080197ab (chromium)
+                                                       #7  0x00005654396c62f8 _ZN4base12_GLOBAL__N_110ThreadFuncEPv$d057525a39469bd043963c96d8725723.cfi (chromium)
+                                                       #8  0x00007f45b7f1e57f start_thread (libpthread.so.0)
+                                                       #9  0x00007f45b4eac0e3 __clone (libc.so.6)
+
+                                                       Stack trace of thread 12:
+                                                       #0  0x00007f45b7f24415 pthread_cond_wait@@GLIBC_2.3.2 (libpthread.so.0)
+                                                       #1  0x00005654396ba412 _ZN4base17ConditionVariable4WaitEv (chromium)
+                                                       #2  0x000056543d6e243c _ZN7content12_GLOBAL__N_127CategorizedWorkerPoolThread3RunEv$29e7a6ad373e24401f65edfd080197ab (chromium)
+                                                       #3  0x00005654396c62f8 _ZN4base12_GLOBAL__N_110ThreadFuncEPv$d057525a39469bd043963c96d8725723.cfi (chromium)
+                                                       #4  0x00007f45b7f1e57f start_thread (libpthread.so.0)
+                                                       #5  0x00007f45b4eac0e3 __clone (libc.so.6)
+
+                                                       Stack trace of thread 5:
+                                                       #0  0x00007f45b7f24415 pthread_cond_wait@@GLIBC_2.3.2 (libpthread.so.0)
+                                                       #1  0x00005654396bad2b _ZN4base13WaitableEvent14TimedWaitUntilERKNS_9TimeTicksE (chromium)
+                                                       #2  0x00005654396b008c _ZN4base13WaitableEvent4WaitEv (chromium)
+                                                       #3  0x0000565439619396 _ZN4base18MessagePumpDefault3RunEPNS_11MessagePump8DelegateE (chromium)
+                                                       #4  0x000056543966a85f _ZN4base16sequence_manager8internal35ThreadControllerWithMessagePumpImpl3RunEbNS_9TimeDeltaE (chromium)
+                                                       #5  0x000056543963e2b6 _ZN4base7RunLoop14RunWithTimeoutENS_9TimeDeltaE (chromium)
+                                                       #6  0x000056543967f4bd _ZN4base6Thread10ThreadMainEv (chromium)
+                                                       #7  0x00005654396c62f8 _ZN4base12_GLOBAL__N_110ThreadFuncEPv$d057525a39469bd043963c96d8725723.cfi (chromium)
+                                                       #8  0x00007f45b7f1e57f start_thread (libpthread.so.0)
+                                                       #9  0x00007f45b4eac0e3 __clone (libc.so.6)
+
+                                                       Stack trace of thread 3:
+                                                       #0  0x00007f45b7f2477c pthread_cond_timedwait@@GLIBC_2.3.2 (libpthread.so.0)
+                                                       #1  0x00005654396ba55b _ZN4base17ConditionVariable9TimedWaitERKNS_9TimeDeltaE (chromium)
+                                                       #2  0x00005654396bab4d _ZN4base13WaitableEvent14TimedWaitUntilERKNS_9TimeTicksE (chromium)
+                                                       #3  0x00005654396badae _ZN4base13WaitableEvent9TimedWaitERKNS_9TimeDeltaE (chromium)
+                                                       #4  0x000056543967839e _ZN4base8internal12WorkerThread9RunWorkerEv (chromium)
+                                                       #5  0x0000565439677bb1 _ZN4base8internal12WorkerThread15RunPooledWorkerEv (chromium)
+                                                       #6  0x00005654396c62f8 _ZN4base12_GLOBAL__N_110ThreadFuncEPv$d057525a39469bd043963c96d8725723.cfi (chromium)
+                                                       #7  0x00007f45b7f1e57f start_thread (libpthread.so.0)
+                                                       #8  0x00007f45b4eac0e3 __clone (libc.so.6)
+
+                                                       Stack trace of thread 13:
+                                                       #0  0x00007f45b7f2477c pthread_cond_timedwait@@GLIBC_2.3.2 (libpthread.so.0)
+                                                       #1  0x00005654396ba55b _ZN4base17ConditionVariable9TimedWaitERKNS_9TimeDeltaE (chromium)
+                                                       #2  0x00005654396bab4d _ZN4base13WaitableEvent14TimedWaitUntilERKNS_9TimeTicksE (chromium)
+                                                       #3  0x00005654396badae _ZN4base13WaitableEvent9TimedWaitERKNS_9TimeDeltaE (chromium)
+                                                       #4  0x0000565439677d6f _ZN4base8internal12WorkerThread9RunWorkerEv (chromium)
+                                                       #5  0x0000565439677bb1 _ZN4base8internal12WorkerThread15RunPooledWorkerEv (chromium)
+                                                       #6  0x00005654396c62f8 _ZN4base12_GLOBAL__N_110ThreadFuncEPv$d057525a39469bd043963c96d8725723.cfi (chromium)
+                                                       #7  0x00007f45b7f1e57f start_thread (libpthread.so.0)
+                                                       #8  0x00007f45b4eac0e3 __clone (libc.so.6)
+Jul 18 10:23:11 danielpc-arch systemd[1]: systemd-coredump@21-20897-0.service: Succeeded.
+Jul 18 10:23:11 danielpc-arch kernel: audit: type=1131 audit(1563409391.089:122): pid=1 uid=0 auid=4294967295 ses=4294967295 msg='unit=systemd-coredump@21-20897-0 comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+Jul 18 10:23:11 danielpc-arch audit[1]: SERVICE_STOP pid=1 uid=0 auid=4294967295 ses=4294967295 msg='unit=systemd-coredump@21-20897-0 comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+Jul 18 10:23:17 danielpc-arch audit[20983]: ANOM_ABEND auid=1000 uid=1000 gid=1000 ses=1 pid=20983 comm="chromium" exe="/usr/lib/chromium/chromium" sig=11 res=1
+Jul 18 10:23:17 danielpc-arch kernel: chromium[20983]: segfault at 0 ip 00007f45b50cf361 sp 00007ffc2ded75f0 error 6 in libstdc++.so.6.0.26[7f45b5022000+f8000]
+Jul 18 10:23:17 danielpc-arch kernel: Code: 2f 4c 8d 77 10 4c 8b 66 08 48 89 fb 48 89 f5 4d 39 ee 0f 84 a1 00 00 00 48 8b 57 10 4c 39 e2 72 58 4d 85 e4 75 33 4c 89 63 08 <43> c6 44 25 00 00 48 8b 44 24 08 64 48 33 04 25 28 00 00 00 0f 85
+Jul 18 10:23:17 danielpc-arch kernel: audit: type=1701 audit(1563409397.535:123): auid=1000 uid=1000 gid=1000 ses=1 pid=20983 comm="chromium" exe="/usr/lib/chromium/chromium" sig=11 res=1
+Jul 18 10:23:17 danielpc-arch systemd[1]: Started Process Core Dump (PID 21100/UID 0).
+Jul 18 10:23:17 danielpc-arch audit[1]: SERVICE_START pid=1 uid=0 auid=4294967295 ses=4294967295 msg='unit=systemd-coredump@22-21100-0 comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+Jul 18 10:23:17 danielpc-arch kernel: audit: type=1130 audit(1563409397.552:124): pid=1 uid=0 auid=4294967295 ses=4294967295 msg='unit=systemd-coredump@22-21100-0 comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+Jul 18 10:23:18 danielpc-arch audit[20389]: ANOM_ABEND auid=1000 uid=1000 gid=1000 ses=1 pid=20389 comm="chromium" exe="/usr/lib/chromium/chromium" sig=11 res=1
+Jul 18 10:23:18 danielpc-arch kernel: chromium[20389]: segfault at 38 ip 000055726b504ed0 sp 00007ffd9da2b090 error 4 in chromium[55726adb3000+6ec5000]
+Jul 18 10:23:18 danielpc-arch kernel: Code: e8 65 c7 76 06 cc cc cc cc cc 55 48 89 e5 53 48 83 ec 18 48 89 fb 64 48 8b 04 25 28 00 00 00 48 89 45 f0 48 8b 47 48 48 8b 00 <48> 8b 78 38 48 89 7d e8 48 c7 40 38 00 00 00 00 48 8b 47 08 48 8d
+Jul 18 10:23:18 danielpc-arch kernel: audit: type=1701 audit(1563409398.225:125): auid=1000 uid=1000 gid=1000 ses=1 pid=20389 comm="chromium" exe="/usr/lib/chromium/chromium" sig=11 res=1
+Jul 18 10:23:18 danielpc-arch systemd[1]: Started Process Core Dump (PID 21108/UID 0).
+Jul 18 10:23:18 danielpc-arch audit[1]: SERVICE_START pid=1 uid=0 auid=4294967295 ses=4294967295 msg='unit=systemd-coredump@23-21108-0 comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+Jul 18 10:23:18 danielpc-arch kernel: audit: type=1130 audit(1563409398.245:126): pid=1 uid=0 auid=4294967295 ses=4294967295 msg='unit=systemd-coredump@23-21108-0 comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+Jul 18 10:23:18 danielpc-arch audit[20364]: ANOM_ABEND auid=1000 uid=1000 gid=1000 ses=1 pid=20364 comm="chromium" exe="/usr/lib/chromium/chromium" sig=11 res=1
+Jul 18 10:23:18 danielpc-arch kernel: chromium[20364]: segfault at 1 ip 00007fdd43edf7bd sp 00007ffd32695cd0 error 4 in libwayland-client.so.0.3.0[7fdd43ede000+5000]
+Jul 18 10:23:18 danielpc-arch kernel: Code: c7 44 24 08 10 00 00 00 c7 44 24 0c 30 00 00 00 48 8d 84 24 b0 01 00 00 48 89 44 24 10 48 8d 84 24 d0 00 00 00 48 89 44 24 18 <48> 8b 13 89 e8 48 8d 04 40 48 c1 e0 03 48 03 42 10 48 8d 4c 24 08
+Jul 18 10:23:18 danielpc-arch kernel: audit: type=1701 audit(1563409398.545:127): auid=1000 uid=1000 gid=1000 ses=1 pid=20364 comm="chromium" exe="/usr/lib/chromium/chromium" sig=11 res=1
+Jul 18 10:23:18 danielpc-arch systemd[1]: Started Process Core Dump (PID 21111/UID 0).
+Jul 18 10:23:18 danielpc-arch audit[1]: SERVICE_START pid=1 uid=0 auid=4294967295 ses=4294967295 msg='unit=systemd-coredump@24-21111-0 comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+Jul 18 10:23:18 danielpc-arch kernel: audit: type=1130 audit(1563409398.559:128): pid=1 uid=0 auid=4294967295 ses=4294967295 msg='unit=systemd-coredump@24-21111-0 comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+Jul 18 10:23:20 danielpc-arch systemd-coredump[21109]: Process 20389 (chromium) of user 1000 dumped core.
+
+                                                       Stack trace of thread 20389:
+                                                       #0  0x000055726b504ed0 _ZThn64_N2ui21GbmSurfacelessWayland14OnPresentationEjRKN3gfx20PresentationFeedbackE (chromium)
+                                                       #1  0x000055726d7d6e37 _ZN4base13TaskAnnotator7RunTaskEPKcPNS_11PendingTaskE (chromium)
+                                                       #2  0x000055726d7e7f24 _ZN4base16sequence_manager8internal35ThreadControllerWithMessagePumpImpl10DoWorkImplEPNS0_7LazyNowEPb (chromium)
+                                                       #3  0x000055726d7e7b7b _ZN4base16sequence_manager8internal35ThreadControllerWithMessagePumpImpl10DoSomeWorkEv (chromium)
+                                                       #4  0x000055726d797355 _ZN4base18MessagePumpDefault3RunEPNS_11MessagePump8DelegateE (chromium)
+                                                       #5  0x000055726d7e885f _ZN4base16sequence_manager8internal35ThreadControllerWithMessagePumpImpl3RunEbNS_9TimeDeltaE (chromium)
+                                                       #6  0x000055726d7bc2b6 _ZN4base7RunLoop14RunWithTimeoutENS_9TimeDeltaE (chromium)
+                                                       #7  0x0000557271778b14 _ZN7content7GpuMainERKNS_18MainFunctionParamsE.cfi (chromium)
+                                                       #8  0x000055726d2ebbb8 _ZN7content21ContentMainRunnerImpl3RunEb (chromium)
+                                                       #9  0x000055726d313fe6 _ZN15service_manager4MainERKNS_10MainParamsE (chromium)
+                                                       #10 0x000055726d2ead41 _ZN7content11ContentMainERKNS_17ContentMainParamsE (chromium)
+                                                       #11 0x000055726afca44e ChromeMain (chromium)
+                                                       #12 0x00007f824e4d9ee3 __libc_start_main (libc.so.6)
+                                                       #13 0x000055726adb302e _start (chromium)
+
+                                                       Stack trace of thread 20479:
+                                                       #0  0x00007f825162777c pthread_cond_timedwait@@GLIBC_2.3.2 (libpthread.so.0)
+                                                       #1  0x000055726d83855b _ZN4base17ConditionVariable9TimedWaitERKNS_9TimeDeltaE (chromium)
+                                                       #2  0x000055726d838b4d _ZN4base13WaitableEvent14TimedWaitUntilERKNS_9TimeTicksE (chromium)
+                                                       #3  0x000055726d838dae _ZN4base13WaitableEvent9TimedWaitERKNS_9TimeDeltaE (chromium)
+                                                       #4  0x000055726d7973ac _ZN4base18MessagePumpDefault3RunEPNS_11MessagePump8DelegateE (chromium)
+                                                       #5  0x000055726d7e885f _ZN4base16sequence_manager8internal35ThreadControllerWithMessagePumpImpl3RunEbNS_9TimeDeltaE (chromium)
+                                                       #6  0x000055726d7bc2b6 _ZN4base7RunLoop14RunWithTimeoutENS_9TimeDeltaE (chromium)
+                                                       #7  0x000055726d7fd4bd _ZN4base6Thread10ThreadMainEv (chromium)
+                                                       #8  0x000055726d8442f8 _ZN4base12_GLOBAL__N_110ThreadFuncEPv$d057525a39469bd043963c96d8725723.cfi (chromium)
+                                                       #9  0x00007f825162157f start_thread (libpthread.so.0)
+                                                       #10 0x00007f824e5af0e3 __clone (libc.so.6)
+
+                                                       Stack trace of thread 20472:
+                                                       #0  0x00007f8251627415 pthread_cond_wait@@GLIBC_2.3.2 (libpthread.so.0)
+                                                       #1  0x00007f824170aebc n/a (i965_dri.so)
+                                                       #2  0x00007f824170aab8 n/a (i965_dri.so)
+                                                       #3  0x00007f825162157f start_thread (libpthread.so.0)
+                                                       #4  0x00007f824e5af0e3 __clone (libc.so.6)
+
+                                                       Stack trace of thread 20450:
+                                                       #0  0x00007f8251627415 pthread_cond_wait@@GLIBC_2.3.2 (libpthread.so.0)
+                                                       #1  0x00007f824170aebc n/a (i965_dri.so)
+                                                       #2  0x00007f824170aab8 n/a (i965_dri.so)
+                                                       #3  0x00007f825162157f start_thread (libpthread.so.0)
+                                                       #4  0x00007f824e5af0e3 __clone (libc.so.6)
+
+                                                       Stack trace of thread 20478:
+                                                       #0  0x00007f824e5af41e epoll_wait (libc.so.6)
+                                                       #1  0x000055726d8a860b epoll_dispatch$fa565fa3c1e953c9ae4ecee0ae4a3ca0.cfi (chromium)
+                                                       #2  0x000055726d8a5da6 event_base_loop (chromium)
+                                                       #3  0x000055726d84106e _ZN4base19MessagePumpLibevent3RunEPNS_11MessagePump8DelegateE (chromium)
+                                                       #4  0x000055726d7e885f _ZN4base16sequence_manager8internal35ThreadControllerWithMessagePumpImpl3RunEbNS_9TimeDeltaE (chromium)
+                                                       #5  0x000055726d7bc2b6 _ZN4base7RunLoop14RunWithTimeoutENS_9TimeDeltaE (chromium)
+                                                       #6  0x000055726d7fd4bd _ZN4base6Thread10ThreadMainEv (chromium)
+                                                       #7  0x000055726d8442f8 _ZN4base12_GLOBAL__N_110ThreadFuncEPv$d057525a39469bd043963c96d8725723.cfi (chromium)
+                                                       #8  0x00007f825162157f start_thread (libpthread.so.0)
+                                                       #9  0x00007f824e5af0e3 __clone (libc.so.6)
+
+                                                       Stack trace of thread 20477:
+                                                       #0  0x00007f825162777c pthread_cond_timedwait@@GLIBC_2.3.2 (libpthread.so.0)
+                                                       #1  0x000055726d83855b _ZN4base17ConditionVariable9TimedWaitERKNS_9TimeDeltaE (chromium)
+                                                       #2  0x000055726d838b4d _ZN4base13WaitableEvent14TimedWaitUntilERKNS_9TimeTicksE (chromium)
+                                                       #3  0x000055726d838dae _ZN4base13WaitableEvent9TimedWaitERKNS_9TimeDeltaE (chromium)
+                                                       #4  0x000055726d7f5d6f _ZN4base8internal12WorkerThread9RunWorkerEv (chromium)
+                                                       #5  0x000055726d7f5bb1 _ZN4base8internal12WorkerThread15RunPooledWorkerEv (chromium)
+                                                       #6  0x000055726d8442f8 _ZN4base12_GLOBAL__N_110ThreadFuncEPv$d057525a39469bd043963c96d8725723.cfi (chromium)
+                                                       #7  0x00007f825162157f start_thread (libpthread.so.0)
+                                                       #8  0x00007f824e5af0e3 __clone (libc.so.6)
+
+                                                       Stack trace of thread 20475:
+                                                       #0  0x00007f8251627415 pthread_cond_wait@@GLIBC_2.3.2 (libpthread.so.0)
+                                                       #1  0x000055726d838d2b _ZN4base13WaitableEvent14TimedWaitUntilERKNS_9TimeTicksE (chromium)
+                                                       #2  0x000055726d82e08c _ZN4base13WaitableEvent4WaitEv (chromium)
+                                                       #3  0x000055726d797396 _ZN4base18MessagePumpDefault3RunEPNS_11MessagePump8DelegateE (chromium)
+                                                       #4  0x000055726d7e885f _ZN4base16sequence_manager8internal35ThreadControllerWithMessagePumpImpl3RunEbNS_9TimeDeltaE (chromium)
+                                                       #5  0x000055726d7bc2b6 _ZN4base7RunLoop14RunWithTimeoutENS_9TimeDeltaE (chromium)
+                                                       #6  0x000055726d7fd4bd _ZN4base6Thread10ThreadMainEv (chromium)
+                                                       #7  0x000055726d8442f8 _ZN4base12_GLOBAL__N_110ThreadFuncEPv$d057525a39469bd043963c96d8725723.cfi (chromium)
+                                                       #8  0x00007f825162157f start_thread (libpthread.so.0)
+                                                       #9  0x00007f824e5af0e3 __clone (libc.so.6)
+
+                                                       Stack trace of thread 20476:
+                                                       #0  0x00007f824e5af41e epoll_wait (libc.so.6)
+                                                       #1  0x000055726d8a860b epoll_dispatch$fa565fa3c1e953c9ae4ecee0ae4a3ca0.cfi (chromium)
+                                                       #2  0x000055726d8a5da6 event_base_loop (chromium)
+                                                       #3  0x000055726d841125 _ZN4base19MessagePumpLibevent3RunEPNS_11MessagePump8DelegateE (chromium)
+                                                       #4  0x000055726d7e885f _ZN4base16sequence_manager8internal35ThreadControllerWithMessagePumpImpl3RunEbNS_9TimeDeltaE (chromium)
+                                                       #5  0x000055726d7bc2b6 _ZN4base7RunLoop14RunWithTimeoutENS_9TimeDeltaE (chromium)
+                                                       #6  0x000055726d7ec9d4 _ZN4base8internal13ServiceThread3RunEPNS_7RunLoopE (chromium)
+                                                       #7  0x000055726d7fd4bd _ZN4base6Thread10ThreadMainEv (chromium)
+                                                       #8  0x000055726d8442f8 _ZN4base12_GLOBAL__N_110ThreadFuncEPv$d057525a39469bd043963c96d8725723.cfi (chromium)
+                                                       #9  0x00007f825162157f start_thread (libpthread.so.0)
+                                                       #10 0x00007f824e5af0e3 __clone (libc.so.6)
+Jul 18 10:23:20 danielpc-arch systemd[1]: systemd-coredump@23-21108-0.service: Succeeded.
+Jul 18 10:23:20 danielpc-arch kernel: audit: type=1131 audit(1563409400.492:129): pid=1 uid=0 auid=4294967295 ses=4294967295 msg='unit=systemd-coredump@23-21108-0 comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+Jul 18 10:23:20 danielpc-arch audit[1]: SERVICE_STOP pid=1 uid=0 auid=4294967295 ses=4294967295 msg='unit=systemd-coredump@23-21108-0 comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+Jul 18 10:23:21 danielpc-arch systemd-coredump[21101]: Process 20983 (chromium) of user 1000 dumped core.
+
+                                                       Stack trace of thread 1:
+                                                       #0  0x00007f45b50cf361 _ZNSt11char_traitsIcE6assignERcRKc (libstdc++.so.6)
+                                                       #1  0x000056543c1281af _ZN5blink12FontCacheKeyaSERKS0_ (chromium)
+                                                       #2  0x000056543c39d7fc _ZN5blink20CSSSegmentedFontFace11GetFontDataERKNS_15FontDescriptionE (chromium)
+                                                       #3  0x000056543c39d3ad _ZN5blink15CSSFontSelector11GetFontDataERKNS_15FontDescriptionERKN3WTF12AtomicStringE (chromium)
+                                                       #4  0x000056543c17817e _ZNK5blink16FontFallbackList10FontDataAtERKNS_15FontDescriptionEj (chromium)
+                                                       #5  0x000056543c1788fe _ZNK5blink16FontFallbackList30DeterminePrimarySimpleFontDataERKNS_15FontDescriptionE (chromium)
+                                                       #6  0x000056543cd87a07 _ZNK5blink13ComputedStyle18ComputedLineHeightEv (chromium)
+                                                       #7  0x000056543c84a697 _ZN5blink29TextControlInnerEditorElement26CustomStyleForLayoutObjectEv (chromium)
+                                                       #8  0x000056543c532522 _ZN5blink7Element20StyleForLayoutObjectEb (chromium)
+                                                       #9  0x000056543c4eb949 _ZN5blink7Element11RecalcStyleENS_17StyleRecalcChangeE (chromium)
+                                                       #10 0x000056543c4eb6a5 _ZN5blink13ContainerNode22RecalcDescendantStylesENS_17StyleRecalcChangeE (chromium)
+                                                       #11 0x000056543c58cadf _ZN5blink10ShadowRoot11RecalcStyleENS_17StyleRecalcChangeE (chromium)
+                                                       #12 0x000056543c4ec3a6 _ZN5blink7Element11RecalcStyleENS_17StyleRecalcChangeE (chromium)
+                                                       #13 0x000056543c4ebcd5 _ZN5blink7Element11RecalcStyleENS_17StyleRecalcChangeE (chromium)
+                                                       #14 0x000056543c4ebcd5 _ZN5blink7Element11RecalcStyleENS_17StyleRecalcChangeE (chromium)
+                                                       #15 0x000056543c4ebcd5 _ZN5blink7Element11RecalcStyleENS_17StyleRecalcChangeE (chromium)
+                                                       #16 0x000056543c4ebcd5 _ZN5blink7Element11RecalcStyleENS_17StyleRecalcChangeE (chromium)
+                                                       #17 0x000056543c4ebcd5 _ZN5blink7Element11RecalcStyleENS_17StyleRecalcChangeE (chromium)
+                                                       #18 0x000056543c4b99ae _ZN5blink11StyleEngine11RecalcStyleENS_17StyleRecalcChangeE (chromium)
+                                                       #19 0x000056543c4fbcc5 _ZN5blink8Document24UpdateStyleAndLayoutTreeEv (chromium)
+                                                       #20 0x000056543c73c854 _ZN5blink14LocalFrameView37UpdateStyleAndLayoutIfNeededRecursiveEv (chromium)
+                                                       #21 0x000056543c73afa7 _ZN5blink14LocalFrameView21UpdateLifecyclePhasesENS_17DocumentLifecycle14LifecycleStateENS1_21LifecycleUpdateReasonE (chromium)
+                                                       #22 0x000056543cc5446b _ZN5blink18PageWidgetDelegate15UpdateLifecycleERNS_4PageERNS_10LocalFrameENS_9WebWidget15LifecycleUpdateENS5_21LifecycleUpdateReasonE (chromium)
+                                                       #23 0x000056543c6ba067 _ZN5blink11WebViewImpl15UpdateLifecycleENS_9WebWidget15LifecycleUpdateENS1_21LifecycleUpdateReasonE (chromium)
+                                                       #24 0x000056543d941c07 _ZN7content12RenderWidget17UpdateVisualStateEv (chromium)
+                                                       #25 0x000056543a5d5798 _ZN2cc9ProxyMain14BeginMainFrameESt10unique_ptrINS_28BeginMainFrameAndCommitStateESt14default_deleteIS2_EE (chromium)
+                                                       #26 0x000056543a5ebdbe _ZN4base8internal7InvokerINS0_9BindStateIMN2cc9ProxyMainEFvSt10unique_ptrINS3_28BeginMainFrameAndCommitStateESt14default_deleteIS6_EEEJNS_7WeakPtrIS4_EENS0_13PassedWrapperIS9_EEEEEFvvEE7RunOnceEPNS0_13BindStateBaseE.cfi (chromium)
+                                                       #27 0x0000565439658e37 _ZN4base13TaskAnnotator7RunTaskEPKcPNS_11PendingTaskE (chromium)
+                                                       #28 0x0000565439669f24 _ZN4base16sequence_manager8internal35ThreadControllerWithMessagePumpImpl10DoWorkImplEPNS0_7LazyNowEPb (chromium)
+                                                       #29 0x0000565439669b7b _ZN4base16sequence_manager8internal35ThreadControllerWithMessagePumpImpl10DoSomeWorkEv (chromium)
+                                                       #30 0x0000565439619355 _ZN4base18MessagePumpDefault3RunEPNS_11MessagePump8DelegateE (chromium)
+                                                       #31 0x000056543966a85f _ZN4base16sequence_manager8internal35ThreadControllerWithMessagePumpImpl3RunEbNS_9TimeDeltaE (chromium)
+                                                       #32 0x000056543963e2b6 _ZN4base7RunLoop14RunWithTimeoutENS_9TimeDeltaE (chromium)
+                                                       #33 0x000056543d94c047 _ZN7content12RendererMainERKNS_18MainFunctionParamsE.cfi (chromium)
+                                                       #34 0x000056543916ebe1 _ZN7content21ContentMainRunnerImpl3RunEb (chromium)
+                                                       #35 0x0000565439195fe6 _ZN15service_manager4MainERKNS_10MainParamsE (chromium)
+                                                       #36 0x000056543916cd41 _ZN7content11ContentMainERKNS_17ContentMainParamsE (chromium)
+                                                       #37 0x0000565436e4c44e ChromeMain (chromium)
+                                                       #38 0x00007f45b4dd6ee3 __libc_start_main (libc.so.6)
+                                                       #39 0x0000565436c3502e _start (chromium)
+
+                                                       Stack trace of thread 8:
+                                                       #0  0x00007f45b7f24415 pthread_cond_wait@@GLIBC_2.3.2 (libpthread.so.0)
+                                                       #1  0x00005654396ba412 _ZN4base17ConditionVariable4WaitEv (chromium)
+                                                       #2  0x000056543d6e243c _ZN7content12_GLOBAL__N_127CategorizedWorkerPoolThread3RunEv$29e7a6ad373e24401f65edfd080197ab (chromium)
+                                                       #3  0x00005654396c62f8 _ZN4base12_GLOBAL__N_110ThreadFuncEPv$d057525a39469bd043963c96d8725723.cfi (chromium)
+                                                       #4  0x00007f45b7f1e57f start_thread (libpthread.so.0)
+                                                       #5  0x00007f45b4eac0e3 __clone (libc.so.6)
+
+                                                       Stack trace of thread 2:
+                                                       #0  0x00007f45b4eac41e epoll_wait (libc.so.6)
+                                                       #1  0x000056543972a60b epoll_dispatch$fa565fa3c1e953c9ae4ecee0ae4a3ca0.cfi (chromium)
+                                                       #2  0x0000565439727da6 event_base_loop (chromium)
+                                                       #3  0x00005654396c3125 _ZN4base19MessagePumpLibevent3RunEPNS_11MessagePump8DelegateE (chromium)
+                                                       #4  0x000056543966a85f _ZN4base16sequence_manager8internal35ThreadControllerWithMessagePumpImpl3RunEbNS_9TimeDeltaE (chromium)
+                                                       #5  0x000056543963e2b6 _ZN4base7RunLoop14RunWithTimeoutENS_9TimeDeltaE (chromium)
+                                                       #6  0x000056543966e9d4 _ZN4base8internal13ServiceThread3RunEPNS_7RunLoopE (chromium)
+                                                       #7  0x000056543967f4bd _ZN4base6Thread10ThreadMainEv (chromium)
+                                                       #8  0x00005654396c62f8 _ZN4base12_GLOBAL__N_110ThreadFuncEPv$d057525a39469bd043963c96d8725723.cfi (chromium)
+                                                       #9  0x00007f45b7f1e57f start_thread (libpthread.so.0)
+                                                       #10 0x00007f45b4eac0e3 __clone (libc.so.6)
+
+                                                       Stack trace of thread 11:
+                                                       #0  0x00007f45b7f24415 pthread_cond_wait@@GLIBC_2.3.2 (libpthread.so.0)
+                                                       #1  0x00005654396ba412 _ZN4base17ConditionVariable4WaitEv (chromium)
+                                                       #2  0x000056543d6e243c _ZN7content12_GLOBAL__N_127CategorizedWorkerPoolThread3RunEv$29e7a6ad373e24401f65edfd080197ab (chromium)
+                                                       #3  0x00005654396c62f8 _ZN4base12_GLOBAL__N_110ThreadFuncEPv$d057525a39469bd043963c96d8725723.cfi (chromium)
+                                                       #4  0x00007f45b7f1e57f start_thread (libpthread.so.0)
+                                                       #5  0x00007f45b4eac0e3 __clone (libc.so.6)
+
+                                                       Stack trace of thread 3:
+                                                       #0  0x00007f45b7f2477c pthread_cond_timedwait@@GLIBC_2.3.2 (libpthread.so.0)
+                                                       #1  0x00005654396ba55b _ZN4base17ConditionVariable9TimedWaitERKNS_9TimeDeltaE (chromium)
+                                                       #2  0x00005654396bab4d _ZN4base13WaitableEvent14TimedWaitUntilERKNS_9TimeTicksE (chromium)
+                                                       #3  0x00005654396badae _ZN4base13WaitableEvent9TimedWaitERKNS_9TimeDeltaE (chromium)
+                                                       #4  0x000056543967839e _ZN4base8internal12WorkerThread9RunWorkerEv (chromium)
+                                                       #5  0x0000565439677bb1 _ZN4base8internal12WorkerThread15RunPooledWorkerEv (chromium)
+                                                       #6  0x00005654396c62f8 _ZN4base12_GLOBAL__N_110ThreadFuncEPv$d057525a39469bd043963c96d8725723.cfi (chromium)
+                                                       #7  0x00007f45b7f1e57f start_thread (libpthread.so.0)
+                                                       #8  0x00007f45b4eac0e3 __clone (libc.so.6)
+
+                                                       Stack trace of thread 5:
+                                                       #0  0x00007f45b7f24415 pthread_cond_wait@@GLIBC_2.3.2 (libpthread.so.0)
+                                                       #1  0x00005654396bad2b _ZN4base13WaitableEvent14TimedWaitUntilERKNS_9TimeTicksE (chromium)
+                                                       #2  0x00005654396b008c _ZN4base13WaitableEvent4WaitEv (chromium)
+                                                       #3  0x0000565439619396 _ZN4base18MessagePumpDefault3RunEPNS_11MessagePump8DelegateE (chromium)
+                                                       #4  0x000056543966a85f _ZN4base16sequence_manager8internal35ThreadControllerWithMessagePumpImpl3RunEbNS_9TimeDeltaE (chromium)
+                                                       #5  0x000056543963e2b6 _ZN4base7RunLoop14RunWithTimeoutENS_9TimeDeltaE (chromium)
+                                                       #6  0x000056543967f4bd _ZN4base6Thread10ThreadMainEv (chromium)
+                                                       #7  0x00005654396c62f8 _ZN4base12_GLOBAL__N_110ThreadFuncEPv$d057525a39469bd043963c96d8725723.cfi (chromium)
+                                                       #8  0x00007f45b7f1e57f start_thread (libpthread.so.0)
+                                                       #9  0x00007f45b4eac0e3 __clone (libc.so.6)
+
+                                                       Stack trace of thread 13:
+                                                       #0  0x00007f45b7f2477c pthread_cond_timedwait@@GLIBC_2.3.2 (libpthread.so.0)
+                                                       #1  0x00005654396ba55b _ZN4base17ConditionVariable9TimedWaitERKNS_9TimeDeltaE (chromium)
+                                                       #2  0x00005654396bab4d _ZN4base13WaitableEvent14TimedWaitUntilERKNS_9TimeTicksE (chromium)
+                                                       #3  0x00005654396badae _ZN4base13WaitableEvent9TimedWaitERKNS_9TimeDeltaE (chromium)
+                                                       #4  0x000056543967839e _ZN4base8internal12WorkerThread9RunWorkerEv (chromium)
+                                                       #5  0x0000565439677bb1 _ZN4base8internal12WorkerThread15RunPooledWorkerEv (chromium)
+                                                       #6  0x00005654396c62f8 _ZN4base12_GLOBAL__N_110ThreadFuncEPv$d057525a39469bd043963c96d8725723.cfi (chromium)
+                                                       #7  0x00007f45b7f1e57f start_thread (libpthread.so.0)
+                                                       #8  0x00007f45b4eac0e3 __clone (libc.so.6)
+
+                                                       Stack trace of thread 9:
+                                                       #0  0x00007f45b7f24415 pthread_cond_wait@@GLIBC_2.3.2 (libpthread.so.0)
+                                                       #1  0x00005654396ba412 _ZN4base17ConditionVariable4WaitEv (chromium)
+                                                       #2  0x000056543d6e243c _ZN7content12_GLOBAL__N_127CategorizedWorkerPoolThread3RunEv$29e7a6ad373e24401f65edfd080197ab (chromium)
+                                                       #3  0x00005654396c62f8 _ZN4base12_GLOBAL__N_110ThreadFuncEPv$d057525a39469bd043963c96d8725723.cfi (chromium)
+                                                       #4  0x00007f45b7f1e57f start_thread (libpthread.so.0)
+                                                       #5  0x00007f45b4eac0e3 __clone (libc.so.6)
+
+                                                       Stack trace of thread 15:
+                                                       #0  0x00007f45b7f2477c pthread_cond_timedwait@@GLIBC_2.3.2 (libpthread.so.0)
+                                                       #1  0x00005654396ba55b _ZN4base17ConditionVariable9TimedWaitERKNS_9TimeDeltaE (chromium)
+                                                       #2  0x00005654396bab4d _ZN4base13WaitableEvent14TimedWaitUntilERKNS_9TimeTicksE (chromium)
+                                                       #3  0x00005654396badae _ZN4base13WaitableEvent9TimedWaitERKNS_9TimeDeltaE (chromium)
+                                                       #4  0x0000565439677d6f _ZN4base8internal12WorkerThread9RunWorkerEv (chromium)
+                                                       #5  0x0000565439677bb1 _ZN4base8internal12WorkerThread15RunPooledWorkerEv (chromium)
+                                                       #6  0x00005654396c62f8 _ZN4base12_GLOBAL__N_110ThreadFuncEPv$d057525a39469bd043963c96d8725723.cfi (chromium)
+                                                       #7  0x00007f45b7f1e57f start_thread (libpthread.so.0)
+                                                       #8  0x00007f45b4eac0e3 __clone (libc.so.6)
+
+                                                       Stack trace of thread 4:
+                                                       #0  0x00007f45b4eac41e epoll_wait (libc.so.6)
+                                                       #1  0x000056543972a60b epoll_dispatch$fa565fa3c1e953c9ae4ecee0ae4a3ca0.cfi (chromium)
+                                                       #2  0x0000565439727da6 event_base_loop (chromium)
+                                                       #3  0x00005654396c306e _ZN4base19MessagePumpLibevent3RunEPNS_11MessagePump8DelegateE (chromium)
+                                                       #4  0x000056543966a85f _ZN4base16sequence_manager8internal35ThreadControllerWithMessagePumpImpl3RunEbNS_9TimeDeltaE (chromium)
+                                                       #5  0x000056543963e2b6 _ZN4base7RunLoop14RunWithTimeoutENS_9TimeDeltaE (chromium)
+                                                       #6  0x000056543967f4bd _ZN4base6Thread10ThreadMainEv (chromium)
+                                                       #7  0x00005654396c62f8 _ZN4base12_GLOBAL__N_110ThreadFuncEPv$d057525a39469bd043963c96d8725723.cfi (chromium)
+                                                       #8  0x00007f45b7f1e57f start_thread (libpthread.so.0)
+                                                       #9  0x00007f45b4eac0e3 __clone (libc.so.6)
+
+                                                       Stack trace of thread 10:
+                                                       #0  0x00007f45b7f24415 pthread_cond_wait@@GLIBC_2.3.2 (libpthread.so.0)
+                                                       #1  0x00005654396ba412 _ZN4base17ConditionVariable4WaitEv (chromium)
+                                                       #2  0x000056543d6e243c _ZN7content12_GLOBAL__N_127CategorizedWorkerPoolThread3RunEv$29e7a6ad373e24401f65edfd080197ab (chromium)
+                                                       #3  0x00005654396c62f8 _ZN4base12_GLOBAL__N_110ThreadFuncEPv$d057525a39469bd043963c96d8725723.cfi (chromium)
+                                                       #4  0x00007f45b7f1e57f start_thread (libpthread.so.0)
+                                                       #5  0x00007f45b4eac0e3 __clone (libc.so.6)
+
+                                                       Stack trace of thread 12:
+                                                       #0  0x00007f45b7f24415 pthread_cond_wait@@GLIBC_2.3.2 (libpthread.so.0)
+                                                       #1  0x00005654396ba412 _ZN4base17ConditionVariable4WaitEv (chromium)
+                                                       #2  0x000056543d6e243c _ZN7content12_GLOBAL__N_127CategorizedWorkerPoolThread3RunEv$29e7a6ad373e24401f65edfd080197ab (chromium)
+                                                       #3  0x00005654396c62f8 _ZN4base12_GLOBAL__N_110ThreadFuncEPv$d057525a39469bd043963c96d8725723.cfi (chromium)
+                                                       #4  0x00007f45b7f1e57f start_thread (libpthread.so.0)
+                                                       #5  0x00007f45b4eac0e3 __clone (libc.so.6)
+
+                                                       Stack trace of thread 6:
+                                                       #0  0x00007f45b7f2477c pthread_cond_timedwait@@GLIBC_2.3.2 (libpthread.so.0)
+                                                       #1  0x00005654396ba55b _ZN4base17ConditionVariable9TimedWaitERKNS_9TimeDeltaE (chromium)
+                                                       #2  0x00005654396bab4d _ZN4base13WaitableEvent14TimedWaitUntilERKNS_9TimeTicksE (chromium)
+                                                       #3  0x00005654396badae _ZN4base13WaitableEvent9TimedWaitERKNS_9TimeDeltaE (chromium)
+                                                       #4  0x000056543967839e _ZN4base8internal12WorkerThread9RunWorkerEv (chromium)
+                                                       #5  0x0000565439677bb1 _ZN4base8internal12WorkerThread15RunPooledWorkerEv (chromium)
+                                                       #6  0x00005654396c62f8 _ZN4base12_GLOBAL__N_110ThreadFuncEPv$d057525a39469bd043963c96d8725723.cfi (chromium)
+                                                       #7  0x00007f45b7f1e57f start_thread (libpthread.so.0)
+                                                       #8  0x00007f45b4eac0e3 __clone (libc.so.6)
+
+                                                       Stack trace of thread 14:
+                                                       #0  0x00007f45b7f2477c pthread_cond_timedwait@@GLIBC_2.3.2 (libpthread.so.0)
+                                                       #1  0x00005654396ba55b _ZN4base17ConditionVariable9TimedWaitERKNS_9TimeDeltaE (chromium)
+                                                       #2  0x00005654396bab4d _ZN4base13WaitableEvent14TimedWaitUntilERKNS_9TimeTicksE (chromium)
+                                                       #3  0x00005654396badae _ZN4base13WaitableEvent9TimedWaitERKNS_9TimeDeltaE (chromium)
+                                                       #4  0x000056543967839e _ZN4base8internal12WorkerThread9RunWorkerEv (chromium)
+                                                       #5  0x0000565439677bb1 _ZN4base8internal12WorkerThread15RunPooledWorkerEv (chromium)
+                                                       #6  0x00005654396c62f8 _ZN4base12_GLOBAL__N_110ThreadFuncEPv$d057525a39469bd043963c96d8725723.cfi (chromium)
+                                                       #7  0x00007f45b7f1e57f start_thread (libpthread.so.0)
+                                                       #8  0x00007f45b4eac0e3 __clone (libc.so.6)
+
+                                                       Stack trace of thread 7:
+                                                       #0  0x00007f45b7f2477c pthread_cond_timedwait@@GLIBC_2.3.2 (libpthread.so.0)
+                                                       #1  0x00005654396ba55b _ZN4base17ConditionVariable9TimedWaitERKNS_9TimeDeltaE (chromium)
+                                                       #2  0x00005654396bab4d _ZN4base13WaitableEvent14TimedWaitUntilERKNS_9TimeTicksE (chromium)
+                                                       #3  0x00005654396badae _ZN4base13WaitableEvent9TimedWaitERKNS_9TimeDeltaE (chromium)
+                                                       #4  0x00005654396193ac _ZN4base18MessagePumpDefault3RunEPNS_11MessagePump8DelegateE (chromium)
+                                                       #5  0x000056543966a85f _ZN4base16sequence_manager8internal35ThreadControllerWithMessagePumpImpl3RunEbNS_9TimeDeltaE (chromium)
+                                                       #6  0x000056543963e2b6 _ZN4base7RunLoop14RunWithTimeoutENS_9TimeDeltaE (chromium)
+                                                       #7  0x0000565438d28a6f _ZN5blink9scheduler12WorkerThread16SimpleThreadImpl3RunEv (chromium)
+                                                       #8  0x00005654396c62f8 _ZN4base12_GLOBAL__N_110ThreadFuncEPv$d057525a39469bd043963c96d8725723.cfi (chromium)
+                                                       #9  0x00007f45b7f1e57f start_thread (libpthread.so.0)
+                                                       #10 0x00007f45b4eac0e3 __clone (libc.so.6)
+Jul 18 10:23:21 danielpc-arch systemd[1]: systemd-coredump@22-21100-0.service: Succeeded.
+Jul 18 10:23:21 danielpc-arch audit[1]: SERVICE_STOP pid=1 uid=0 auid=4294967295 ses=4294967295 msg='unit=systemd-coredump@22-21100-0 comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+Jul 18 10:23:27 danielpc-arch systemd-coredump[21112]: Process 20364 (chromium) of user 1000 dumped core.
+
+                                                       Stack trace of thread 20364:
+                                                       #0  0x00007fdd43edf7bd wl_proxy_marshal (libwayland-client.so.0)
+                                                       #1  0x000056295bd8931f _ZN2ui24WaylandBufferManagerHost18OnChannelDestroyedEv (chromium)
+                                                       #2  0x000056295c55d063 _ZN7content12_GLOBAL__N_129OnGpuProcessHostDestroyedOnUIEiRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE$846c26792e61b94d62e1c1ed384aaafb (chromium)
+                                                       #3  0x000056295e071e37 _ZN4base13TaskAnnotator7RunTaskEPKcPNS_11PendingTaskE (chromium)
+                                                       #4  0x000056295e082f24 _ZN4base16sequence_manager8internal35ThreadControllerWithMessagePumpImpl10DoWorkImplEPNS0_7LazyNowEPb (chromium)
+                                                       #5  0x000056295e082b7b _ZN4base16sequence_manager8internal35ThreadControllerWithMessagePumpImpl10DoSomeWorkEv (chromium)
+                                                       #6  0x000056295e0dbfff _ZN4base19MessagePumpLibevent3RunEPNS_11MessagePump8DelegateE (chromium)
+                                                       #7  0x000056295e08385f _ZN4base16sequence_manager8internal35ThreadControllerWithMessagePumpImpl3RunEbNS_9TimeDeltaE (chromium)
+                                                       #8  0x000056295e0572b6 _ZN4base7RunLoop14RunWithTimeoutENS_9TimeDeltaE (chromium)
+                                                       #9  0x000056295dbeecf9 _ZN22ChromeBrowserMainParts18MainMessageLoopRunEPi (chromium)
+                                                       #10 0x000056295c37c77e _ZN7content21BrowserMainRunnerImpl3RunEv (chromium)
+                                                       #11 0x000056295c378c57 _ZN7content11BrowserMainERKNS_18MainFunctionParamsE (chromium)
+                                                       #12 0x000056295db86b47 _ZN7content21ContentMainRunnerImpl3RunEb (chromium)
+                                                       #13 0x000056295dbaefe6 _ZN15service_manager4MainERKNS_10MainParamsE (chromium)
+                                                       #14 0x000056295db85d41 _ZN7content11ContentMainERKNS_17ContentMainParamsE (chromium)
+                                                       #15 0x000056295b86544e ChromeMain (chromium)
+                                                       #16 0x00007fdd41b66ee3 __libc_start_main (libc.so.6)
+                                                       #17 0x000056295b64e02e _start (chromium)
+
+                                                       Stack trace of thread 20393:
+                                                       #0  0x00007fdd44cb4415 pthread_cond_wait@@GLIBC_2.3.2 (libpthread.so.0)
+                                                       #1  0x000056295e0d3d2b _ZN4base13WaitableEvent14TimedWaitUntilERKNS_9TimeTicksE (chromium)
+                                                       #2  0x000056295e0c908c _ZN4base13WaitableEvent4WaitEv (chromium)
+                                                       #3  0x000056295e032396 _ZN4base18MessagePumpDefault3RunEPNS_11MessagePump8DelegateE (chromium)
+                                                       #4  0x000056295e08385f _ZN4base16sequence_manager8internal35ThreadControllerWithMessagePumpImpl3RunEbNS_9TimeDeltaE (chromium)
+                                                       #5  0x000056295e0572b6 _ZN4base7RunLoop14RunWithTimeoutENS_9TimeDeltaE (chromium)
+                                                       #6  0x000056295e0984bd _ZN4base6Thread10ThreadMainEv (chromium)
+                                                       #7  0x000056295e0df2f8 _ZN4base12_GLOBAL__N_110ThreadFuncEPv$d057525a39469bd043963c96d8725723.cfi (chromium)
+                                                       #8  0x00007fdd44cae57f start_thread (libpthread.so.0)
+                                                       #9  0x00007fdd41c3c0e3 __clone (libc.so.6)
+
+                                                       Stack trace of thread 20376:
+                                                       #0  0x00007fdd41c3c41e epoll_wait (libc.so.6)
+                                                       #1  0x000056295e14360b epoll_dispatch$fa565fa3c1e953c9ae4ecee0ae4a3ca0.cfi (chromium)
+                                                       #2  0x000056295e140da6 event_base_loop (chromium)
+                                                       #3  0x000056295e0dc125 _ZN4base19MessagePumpLibevent3RunEPNS_11MessagePump8DelegateE (chromium)
+                                                       #4  0x000056295e08385f _ZN4base16sequence_manager8internal35ThreadControllerWithMessagePumpImpl3RunEbNS_9TimeDeltaE (chromium)
+                                                       #5  0x000056295e0572b6 _ZN4base7RunLoop14RunWithTimeoutENS_9TimeDeltaE (chromium)
+                                                       #6  0x000056295e0984bd _ZN4base6Thread10ThreadMainEv (chromium)
+                                                       #7  0x000056295e0df2f8 _ZN4base12_GLOBAL__N_110ThreadFuncEPv$d057525a39469bd043963c96d8725723.cfi (chromium)
+                                                       #8  0x00007fdd44cae57f start_thread (libpthread.so.0)
+                                                       #9  0x00007fdd41c3c0e3 __clone (libc.so.6)
+
+                                                       Stack trace of thread 20372:
+                                                       #0  0x00007fdd44cb477c pthread_cond_timedwait@@GLIBC_2.3.2 (libpthread.so.0)
+                                                       #1  0x000056295e0d355b _ZN4base17ConditionVariable9TimedWaitERKNS_9TimeDeltaE (chromium)
+                                                       #2  0x000056295e0d3b4d _ZN4base13WaitableEvent14TimedWaitUntilERKNS_9TimeTicksE (chromium)
+                                                       #3  0x000056295e0d3dae _ZN4base13WaitableEvent9TimedWaitERKNS_9TimeDeltaE (chromium)
+                                                       #4  0x000056295e09139e _ZN4base8internal12WorkerThread9RunWorkerEv (chromium)
+                                                       #5  0x000056295e090bb1 _ZN4base8internal12WorkerThread15RunPooledWorkerEv (chromium)
+                                                       #6  0x000056295e0df2f8 _ZN4base12_GLOBAL__N_110ThreadFuncEPv$d057525a39469bd043963c96d8725723.cfi (chromium)
+                                                       #7  0x00007fdd44cae57f start_thread (libpthread.so.0)
+                                                       #8  0x00007fdd41c3c0e3 __clone (libc.so.6)
+
+                                                       Stack trace of thread 20503:
+                                                       #0  0x00007fdd44cb477c pthread_cond_timedwait@@GLIBC_2.3.2 (libpthread.so.0)
+                                                       #1  0x000056295e0d355b _ZN4base17ConditionVariable9TimedWaitERKNS_9TimeDeltaE (chromium)
+                                                       #2  0x000056295e0d3b4d _ZN4base13WaitableEvent14TimedWaitUntilERKNS_9TimeTicksE (chromium)
+                                                       #3  0x000056295e0d3dae _ZN4base13WaitableEvent9TimedWaitERKNS_9TimeDeltaE (chromium)
+                                                       #4  0x000056295e0323ac _ZN4base18MessagePumpDefault3RunEPNS_11MessagePump8DelegateE (chromium)
+                                                       #5  0x000056295e08385f _ZN4base16sequence_manager8internal35ThreadControllerWithMessagePumpImpl3RunEbNS_9TimeDeltaE (chromium)
+                                                       #6  0x000056295e0572b6 _ZN4base7RunLoop14RunWithTimeoutENS_9TimeDeltaE (chromium)
+                                                       #7  0x000056295e0984bd _ZN4base6Thread10ThreadMainEv (chromium)
+                                                       #8  0x000056295e0df2f8 _ZN4base12_GLOBAL__N_110ThreadFuncEPv$d057525a39469bd043963c96d8725723.cfi (chromium)
+                                                       #9  0x00007fdd44cae57f start_thread (libpthread.so.0)
+                                                       #10 0x00007fdd41c3c0e3 __clone (libc.so.6)
+
+                                                       Stack trace of thread 20508:
+                                                       #0  0x00007fdd44cb4415 pthread_cond_wait@@GLIBC_2.3.2 (libpthread.so.0)
+                                                       #1  0x000056295e0d3d2b _ZN4base13WaitableEvent14TimedWaitUntilERKNS_9TimeTicksE (chromium)
+                                                       #2  0x000056295e0c908c _ZN4base13WaitableEvent4WaitEv (chromium)
+                                                       #3  0x000056295e032396 _ZN4base18MessagePumpDefault3RunEPNS_11MessagePump8DelegateE (chromium)
+                                                       #4  0x000056295e08385f _ZN4base16sequence_manager8internal35ThreadControllerWithMessagePumpImpl3RunEbNS_9TimeDeltaE (chromium)
+                                                       #5  0x000056295e0572b6 _ZN4base7RunLoop14RunWithTimeoutENS_9TimeDeltaE (chromium)
+                                                       #6  0x000056295e0984bd _ZN4base6Thread10ThreadMainEv (chromium)
+                                                       #7  0x000056295e0df2f8 _ZN4base12_GLOBAL__N_110ThreadFuncEPv$d057525a39469bd043963c96d8725723.cfi (chromium)
+                                                       #8  0x00007fdd44cae57f start_thread (libpthread.so.0)
+                                                       #9  0x00007fdd41c3c0e3 __clone (libc.so.6)
+
+                                                       Stack trace of thread 20375:
+                                                       #0  0x00007fdd41c33e5b __select (libc.so.6)
+                                                       #1  0x000056295e02cde6 _ZN4base12_GLOBAL__N_127InotifyReaderThreadDelegate10ThreadMainEv$608fbc037486d109c873b762e30a0edb (chromium)
+                                                       #2  0x000056295e0df2f8 _ZN4base12_GLOBAL__N_110ThreadFuncEPv$d057525a39469bd043963c96d8725723.cfi (chromium)
+                                                       #3  0x00007fdd44cae57f start_thread (libpthread.so.0)
+                                                       #4  0x00007fdd41c3c0e3 __clone (libc.so.6)
+
+                                                       Stack trace of thread 20373:
+                                                       #0  0x00007fdd44cb477c pthread_cond_timedwait@@GLIBC_2.3.2 (libpthread.so.0)
+                                                       #1  0x000056295e0d355b _ZN4base17ConditionVariable9TimedWaitERKNS_9TimeDeltaE (chromium)
+                                                       #2  0x000056295e0d3b4d _ZN4base13WaitableEvent14TimedWaitUntilERKNS_9TimeTicksE (chromium)
+                                                       #3  0x000056295e0d3dae _ZN4base13WaitableEvent9TimedWaitERKNS_9TimeDeltaE (chromium)
+                                                       #4  0x000056295e09139e _ZN4base8internal12WorkerThread9RunWorkerEv (chromium)
+                                                       #5  0x000056295e090bb1 _ZN4base8internal12WorkerThread15RunPooledWorkerEv (chromium)
+                                                       #6  0x000056295e0df2f8 _ZN4base12_GLOBAL__N_110ThreadFuncEPv$d057525a39469bd043963c96d8725723.cfi (chromium)
+                                                       #7  0x00007fdd44cae57f start_thread (libpthread.so.0)
+                                                       #8  0x00007fdd41c3c0e3 __clone (libc.so.6)
+
+                                                       Stack trace of thread 20365:
+                                                       #0  0x00007fdd41c31667 __poll (libc.so.6)
+                                                       #1  0x000056295c747602 _ZN7content17SandboxIPCHandler3RunEv (chromium)
+                                                       #2  0x000056295e0df2f8 _ZN4base12_GLOBAL__N_110ThreadFuncEPv$d057525a39469bd043963c96d8725723.cfi (chromium)
+                                                       #3  0x00007fdd44cae57f start_thread (libpthread.so.0)
+                                                       #4  0x00007fdd41c3c0e3 __clone (libc.so.6)
+
+                                                       Stack trace of thread 20379:
+                                                       #0  0x00007fdd44cb477c pthread_cond_timedwait@@GLIBC_2.3.2 (libpthread.so.0)
+                                                       #1  0x000056295e0d355b _ZN4base17ConditionVariable9TimedWaitERKNS_9TimeDeltaE (chromium)
+                                                       #2  0x000056295e0d3b4d _ZN4base13WaitableEvent14TimedWaitUntilERKNS_9TimeTicksE (chromium)
+                                                       #3  0x000056295e0d3dae _ZN4base13WaitableEvent9TimedWaitERKNS_9TimeDeltaE (chromium)
+                                                       #4  0x000056295e09139e _ZN4base8internal12WorkerThread9RunWorkerEv (chromium)
+                                                       #5  0x000056295e090bb1 _ZN4base8internal12WorkerThread15RunPooledWorkerEv (chromium)
+                                                       #6  0x000056295e0df2f8 _ZN4base12_GLOBAL__N_110ThreadFuncEPv$d057525a39469bd043963c96d8725723.cfi (chromium)
+                                                       #7  0x00007fdd44cae57f start_thread (libpthread.so.0)
+                                                       #8  0x00007fdd41c3c0e3 __clone (libc.so.6)
+
+                                                       Stack trace of thread 20378:
+                                                       #0  0x00007fdd44cb477c pthread_cond_timedwait@@GLIBC_2.3.2 (libpthread.so.0)
+                                                       #1  0x000056295e0d355b _ZN4base17ConditionVariable9TimedWaitERKNS_9TimeDeltaE (chromium)
+                                                       #2  0x000056295e0d3b4d _ZN4base13WaitableEvent14TimedWaitUntilERKNS_9TimeTicksE (chromium)
+                                                       #3  0x000056295e0d3dae _ZN4base13WaitableEvent9TimedWaitERKNS_9TimeDeltaE (chromium)
+                                                       #4  0x000056295e09139e _ZN4base8internal12WorkerThread9RunWorkerEv (chromium)
+                                                       #5  0x000056295e090bb1 _ZN4base8internal12WorkerThread15RunPooledWorkerEv (chromium)
+                                                       #6  0x000056295e0df2f8 _ZN4base12_GLOBAL__N_110ThreadFuncEPv$d057525a39469bd043963c96d8725723.cfi (chromium)
+                                                       #7  0x00007fdd44cae57f start_thread (libpthread.so.0)
+                                                       #8  0x00007fdd41c3c0e3 __clone (libc.so.6)
+
+                                                       Stack trace of thread 20386:
+                                                       #0  0x00007fdd44cb4415 pthread_cond_wait@@GLIBC_2.3.2 (libpthread.so.0)
+                                                       #1  0x000056295e0d3d2b _ZN4base13WaitableEvent14TimedWaitUntilERKNS_9TimeTicksE (chromium)
+                                                       #2  0x000056295e0c908c _ZN4base13WaitableEvent4WaitEv (chromium)
+                                                       #3  0x000056295e032396 _ZN4base18MessagePumpDefault3RunEPNS_11MessagePump8DelegateE (chromium)
+                                                       #4  0x000056295e08385f _ZN4base16sequence_manager8internal35ThreadControllerWithMessagePumpImpl3RunEbNS_9TimeDeltaE (chromium)
+                                                       #5  0x000056295e0572b6 _ZN4base7RunLoop14RunWithTimeoutENS_9TimeDeltaE (chromium)
+                                                       #6  0x000056295e0984bd _ZN4base6Thread10ThreadMainEv (chromium)
+                                                       #7  0x000056295e0df2f8 _ZN4base12_GLOBAL__N_110ThreadFuncEPv$d057525a39469bd043963c96d8725723.cfi (chromium)
+                                                       #8  0x00007fdd44cae57f start_thread (libpthread.so.0)
+                                                       #9  0x00007fdd41c3c0e3 __clone (libc.so.6)
+
+                                                       Stack trace of thread 20374:
+                                                       #0  0x00007fdd44cb22f8 __pthread_mutex_unlock_usercnt (libpthread.so.0)
+                                                       #1  0x000056295c09a7f4 _ZN4mojo4core21MessagePipeDispatcher13AddWatcherRefERK13scoped_refptrINS0_17WatcherDispatcherEEm (chromium)
+                                                       #2  0x000056295c0aa7e3 _ZN4mojo4core17WatcherDispatcher15WatchDispatcherE13scoped_refptrINS0_10DispatcherEEjjm (chromium)
+                                                       #3  0x000056295c08e39d _ZN4mojo4core4Core10AddTriggerEjjjjmPK21MojoAddTriggerOptions (chromium)
+                                                       #4  0x000056295c097507 MojoAddTriggerImpl (chromium)
+                                                       #5  0x000056295e18b817 _ZN4mojo13SimpleWatcher5WatchENS_6HandleEjjRKN4base17RepeatingCallbackIFvjRKNS_18HandleSignalsStateEEEE (chromium)
+                                                       #6  0x000056295e189c8d _ZN4mojo19HandleSignalTrackerC2ENS_6HandleEj13scoped_refptrIN4base19SequencedTaskRunnerEE (chromium)
+                                                       #7  0x000056295e174adf _ZN4mojo9Connector14WaitToReadMoreEv (chromium)
+                                                       #8  0x000056295e174882 _ZN4mojo9ConnectorC2ENS_16ScopedHandleBaseINS_17MessagePipeHandleEEENS0_15ConnectorConfigE13scoped_refptrIN4base19SequencedTaskRunnerEE (chromium)
+                                                       #9  0x000056295e17a0ca _ZN4mojo8internal15MultiplexRouterC2ENS_16ScopedHandleBaseINS_17MessagePipeHandleEEENS1_6ConfigEb13scoped_refptrIN4base19SequencedTaskRunnerEE (chromium)
+                                                       #10 0x000056295e179e8a _ZN4mojo8internal21InterfacePtrStateBase24InitializeEndpointClientEbbSt10unique_ptrINS_15MessageReceiverESt14default_deleteIS3_EEPKc (chromium)
+                                                       #11 0x000056295c5ca887 _ZN4mojo8internal17InterfacePtrStateIN7content5mojom21ChildHistogramFetcherEE25ConfigureProxyIfNecessaryEv (chromium)
+                                                       #12 0x000056295c5be452 _ZN7content19HistogramController18SetHistogramMemoryINS_16ChildProcessHostEEEvPT_N4base26WritableSharedMemoryRegionE (chromium)
+                                                       #13 0x000056295c37403e _ZN7content27BrowserChildProcessHostImpl37LaunchWithoutExtraCommandLineSwitchesESt10unique_ptrINS_32SandboxedProcessLauncherDelegateESt14default_deleteIS2_EES1_IN4base11CommandLineES3_IS7_EEb (chromium)
+                                                       #14 0x000056295c555a39 _ZN7content14GpuProcessHost3GetENS_14GpuProcessKindEb (chromium)
+                                                       #15 0x000056295c9009c3 _ZN4base8internal7InvokerINS0_9BindStateIZN7content26VizProcessTransportFactory27ConnectHostFrameSinkManagerEvE3$_9JN4mojo16InterfaceRequestIN3viz5mojom16FrameSinkManagerEEENS6_16InterfacePtrInfoINS9_22FrameSinkManagerClientEEEEEEFvvEE7RunOnceEPNS0_13BindStateBaseE$81655aaebd94deee472c55027dd498be.cfi (chromium)
+                                                       #16 0x000056295e071e37 _ZN4base13TaskAnnotator7RunTaskEPKcPNS_11PendingTaskE (chromium)
+                                                       #17 0x000056295e082f24 _ZN4base16sequence_manager8internal35ThreadControllerWithMessagePumpImpl10DoWorkImplEPNS0_7LazyNowEPb (chromium)
+                                                       #18 0x000056295e082b7b _ZN4base16sequence_manager8internal35ThreadControllerWithMessagePumpImpl10DoSomeWorkEv (chromium)
+                                                       #19 0x000056295e0dbfff _ZN4base19MessagePumpLibevent3RunEPNS_11MessagePump8DelegateE (chromium)
+                                                       #20 0x000056295e08385f _ZN4base16sequence_manager8internal35ThreadControllerWithMessagePumpImpl3RunEbNS_9TimeDeltaE (chromium)
+                                                       #21 0x000056295e0572b6 _ZN4base7RunLoop14RunWithTimeoutENS_9TimeDeltaE (chromium)
+                                                       #22 0x000056295c382ff1 _ZN7content23BrowserProcessSubThread11IOThreadRunEPN4base7RunLoopE (chromium)
+                                                       #23 0x000056295e0984bd _ZN4base6Thread10ThreadMainEv (chromium)
+                                                       #24 0x000056295e0df2f8 _ZN4base12_GLOBAL__N_110ThreadFuncEPv$d057525a39469bd043963c96d8725723.cfi (chromium)
+                                                       #25 0x00007fdd44cae57f start_thread (libpthread.so.0)
+                                                       #26 0x00007fdd41c3c0e3 __clone (libc.so.6)
+
+                                                       Stack trace of thread 20381:
+                                                       #0  0x00007fdd44cb477c pthread_cond_timedwait@@GLIBC_2.3.2 (libpthread.so.0)
+                                                       #1  0x000056295e0d355b _ZN4base17ConditionVariable9TimedWaitERKNS_9TimeDeltaE (chromium)
+                                                       #2  0x000056295e0d3b4d _ZN4base13WaitableEvent14TimedWaitUntilERKNS_9TimeTicksE (chromium)
+                                                       #3  0x000056295e0d3dae _ZN4base13WaitableEvent9TimedWaitERKNS_9TimeDeltaE (chromium)
+                                                       #4  0x000056295e09139e _ZN4base8internal12WorkerThread9RunWorkerEv (chromium)
+                                                       #5  0x000056295e090bb1 _ZN4base8internal12WorkerThread15RunPooledWorkerEv (chromium)
+                                                       #6  0x000056295e0df2f8 _ZN4base12_GLOBAL__N_110ThreadFuncEPv$d057525a39469bd043963c96d8725723.cfi (chromium)
+                                                       #7  0x00007fdd44cae57f start_thread (libpthread.so.0)
+                                                       #8  0x00007fdd41c3c0e3 __clone (libc.so.6)
+
+                                                       Stack trace of thread 20382:
+                                                       #0  0x00007fdd44cb477c pthread_cond_timedwait@@GLIBC_2.3.2 (libpthread.so.0)
+                                                       #1  0x000056295e0d355b _ZN4base17ConditionVariable9TimedWaitERKNS_9TimeDeltaE (chromium)
+                                                       #2  0x000056295e0d3b4d _ZN4base13WaitableEvent14TimedWaitUntilERKNS_9TimeTicksE (chromium)
+                                                       #3  0x000056295e0d3dae _ZN4base13WaitableEvent9TimedWaitERKNS_9TimeDeltaE (chromium)
+                                                       #4  0x000056295e09139e _ZN4base8internal12WorkerThread9RunWorkerEv (chromium)
+                                                       #5  0x000056295e090bb1 _ZN4base8internal12WorkerThread15RunPooledWorkerEv (chromium)
+                                                       #6  0x000056295e0df2f8 _ZN4base12_GLOBAL__N_110ThreadFuncEPv$d057525a39469bd043963c96d8725723.cfi (chromium)
+                                                       #7  0x00007fdd44cae57f start_thread (libpthread.so.0)
+                                                       #8  0x00007fdd41c3c0e3 __clone (libc.so.6)
+
+                                                       Stack trace of thread 20388:
+                                                       #0  0x00007fdd44cb4415 pthread_cond_wait@@GLIBC_2.3.2 (libpthread.so.0)
+                                                       #1  0x000056295e0d3d2b _ZN4base13WaitableEvent14TimedWaitUntilERKNS_9TimeTicksE (chromium)
+                                                       #2  0x000056295e0c908c _ZN4base13WaitableEvent4WaitEv (chromium)
+                                                       #3  0x000056295e032396 _ZN4base18MessagePumpDefault3RunEPNS_11MessagePump8DelegateE (chromium)
+                                                       #4  0x000056295e08385f _ZN4base16sequence_manager8internal35ThreadControllerWithMessagePumpImpl3RunEbNS_9TimeDeltaE (chromium)
+                                                       #5  0x000056295e0572b6 _ZN4base7RunLoop14RunWithTimeoutENS_9TimeDeltaE (chromium)
+                                                       #6  0x000056295e0984bd _ZN4base6Thread10ThreadMainEv (chromium)
+                                                       #7  0x000056295e0df2f8 _ZN4base12_GLOBAL__N_110ThreadFuncEPv$d057525a39469bd043963c96d8725723.cfi (chromium)
+                                                       #8  0x00007fdd44cae57f start_thread (libpthread.so.0)
+                                                       #9  0x00007fdd41c3c0e3 __clone (libc.so.6)
+
+                                                       Stack trace of thread 20377:
+                                                       #0  0x00007fdd44cb7a6c read (libpthread.so.0)
+                                                       #1  0x000056295cd5c430 _ZN12_GLOBAL__N_116ShutdownDetector10ThreadMainEv$68644ea9ec89302a764c517bfd1eab89 (chromium)
+                                                       #2  0x000056295e0df2f8 _ZN4base12_GLOBAL__N_110ThreadFuncEPv$d057525a39469bd043963c96d8725723.cfi (chromium)
+                                                       #3  0x00007fdd44cae57f start_thread (libpthread.so.0)
+                                                       #4  0x00007fdd41c3c0e3 __clone (libc.so.6)
+
+                                                       Stack trace of thread 20576:
+                                                       #0  0x00007fdd41c3c41e epoll_wait (libc.so.6)
+                                                       #1  0x000056295e14360b epoll_dispatch$fa565fa3c1e953c9ae4ecee0ae4a3ca0.cfi (chromium)
+                                                       #2  0x000056295e140da6 event_base_loop (chromium)
+                                                       #3  0x000056295e0dc125 _ZN4base19MessagePumpLibevent3RunEPNS_11MessagePump8DelegateE (chromium)
+                                                       #4  0x000056295e08385f _ZN4base16sequence_manager8internal35ThreadControllerWithMessagePumpImpl3RunEbNS_9TimeDeltaE (chromium)
+                                                       #5  0x000056295e0572b6 _ZN4base7RunLoop14RunWithTimeoutENS_9TimeDeltaE (chromium)
+                                                       #6  0x000056295e0984bd _ZN4base6Thread10ThreadMainEv (chromium)
+                                                       #7  0x000056295e0df2f8 _ZN4base12_GLOBAL__N_110ThreadFuncEPv$d057525a39469bd043963c96d8725723.cfi (chromium)
+                                                       #8  0x00007fdd44cae57f start_thread (libpthread.so.0)
+                                                       #9  0x00007fdd41c3c0e3 __clone (libc.so.6)
+
+                                                       Stack trace of thread 20385:
+                                                       #0  0x00007fdd44cb4415 pthread_cond_wait@@GLIBC_2.3.2 (libpthread.so.0)
+                                                       #1  0x000056295e0d3412 _ZN4base17ConditionVariable4WaitEv (chromium)
+                                                       #2  0x000056295ef5f268 _ZThn8_N2cc27SingleThreadTaskGraphRunner3RunEv (chromium)
+                                                       #3  0x000056295e0df2f8 _ZN4base12_GLOBAL__N_110ThreadFuncEPv$d057525a39469bd043963c96d8725723.cfi (chromium)
+                                                       #4  0x00007fdd44cae57f start_thread (libpthread.so.0)
+                                                       #5  0x00007fdd41c3c0e3 __clone (libc.so.6)
+
+                                                       Stack trace of thread 20383:
+                                                       #0  0x00007fdd44cb477c pthread_cond_timedwait@@GLIBC_2.3.2 (libpthread.so.0)
+                                                       #1  0x000056295e0d355b _ZN4base17ConditionVariable9TimedWaitERKNS_9TimeDeltaE (chromium)
+                                                       #2  0x000056295e0d3b4d _ZN4base13WaitableEvent14TimedWaitUntilERKNS_9TimeTicksE (chromium)
+                                                       #3  0x000056295e0d3dae _ZN4base13WaitableEvent9TimedWaitERKNS_9TimeDeltaE (chromium)
+                                                       #4  0x000056295e09139e _ZN4base8internal12WorkerThread9RunWorkerEv (chromium)
+                                                       #5  0x000056295e090bb1 _ZN4base8internal12WorkerThread15RunPooledWorkerEv (chromium)
+                                                       #6  0x000056295e0df2f8 _ZN4base12_GLOBAL__N_110ThreadFuncEPv$d057525a39469bd043963c96d8725723.cfi (chromium)
+                                                       #7  0x00007fdd44cae57f start_thread (libpthread.so.0)
+                                                       #8  0x00007fdd41c3c0e3 __clone (libc.so.6)
+
+                                                       Stack trace of thread 20384:
+                                                       #0  0x00007fdd44cb477c pthread_cond_timedwait@@GLIBC_2.3.2 (libpthread.so.0)
+                                                       #1  0x000056295e0d355b _ZN4base17ConditionVariable9TimedWaitERKNS_9TimeDeltaE (chromium)
+                                                       #2  0x000056295e0d3b4d _ZN4base13WaitableEvent14TimedWaitUntilERKNS_9TimeTicksE (chromium)
+                                                       #3  0x000056295e0d3dae _ZN4base13WaitableEvent9TimedWaitERKNS_9TimeDeltaE (chromium)
+                                                       #4  0x000056295e09139e _ZN4base8internal12WorkerThread9RunWorkerEv (chromium)
+                                                       #5  0x000056295e090bb1 _ZN4base8internal12WorkerThread15RunPooledWorkerEv (chromium)
+                                                       #6  0x000056295e0df2f8 _ZN4base12_GLOBAL__N_110ThreadFuncEPv$d057525a39469bd043963c96d8725723.cfi (chromium)
+                                                       #7  0x00007fdd44cae57f start_thread (libpthread.so.0)
+                                                       #8  0x00007fdd41c3c0e3 __clone (libc.so.6)
+
+                                                       Stack trace of thread 20502:
+                                                       #0  0x00007fdd44cb4415 pthread_cond_wait@@GLIBC_2.3.2 (libpthread.so.0)
+                                                       #1  0x000056295e0d3d2b _ZN4base13WaitableEvent14TimedWaitUntilERKNS_9TimeTicksE (chromium)
+                                                       #2  0x000056295e0c908c _ZN4base13WaitableEvent4WaitEv (chromium)
+                                                       #3  0x000056295e091384 _ZN4base8internal12WorkerThread9RunWorkerEv (chromium)
+                                                       #4  0x000056295e090c01 _ZN4base8internal12WorkerThread15RunSharedWorkerEv (chromium)
+                                                       #5  0x000056295e0df2f8 _ZN4base12_GLOBAL__N_110ThreadFuncEPv$d057525a39469bd043963c96d8725723.cfi (chromium)
+                                                       #6  0x00007fdd44cae57f start_thread (libpthread.so.0)
+                                                       #7  0x00007fdd41c3c0e3 __clone (libc.so.6)
+
+                                                       Stack trace of thread 20504:
+                                                       #0  0x00007fdd44cb477c pthread_cond_timedwait@@GLIBC_2.3.2 (libpthread.so.0)
+                                                       #1  0x000056295e0d355b _ZN4base17ConditionVariable9TimedWaitERKNS_9TimeDeltaE (chromium)
+                                                       #2  0x000056295e09a0e4 _ZN4base8Watchdog14ThreadDelegate10ThreadMainEv (chromium)
+                                                       #3  0x000056295e0df2f8 _ZN4base12_GLOBAL__N_110ThreadFuncEPv$d057525a39469bd043963c96d8725723.cfi (chromium)
+                                                       #4  0x00007fdd44cae57f start_thread (libpthread.so.0)
+                                                       #5  0x00007fdd41c3c0e3 __clone (libc.so.6)
+
+                                                       Stack trace of thread 20505:
+                                                       #0  0x00007fdd44cb477c pthread_cond_timedwait@@GLIBC_2.3.2 (libpthread.so.0)
+                                                       #1  0x000056295e0d355b _ZN4base17ConditionVariable9TimedWaitERKNS_9TimeDeltaE (chromium)
+                                                       #2  0x000056295e0d3b4d _ZN4base13WaitableEvent14TimedWaitUntilERKNS_9TimeTicksE (chromium)
+                                                       #3  0x000056295e0d3dae _ZN4base13WaitableEvent9TimedWaitERKNS_9TimeDeltaE (chromium)
+                                                       #4  0x000056295e09139e _ZN4base8internal12WorkerThread9RunWorkerEv (chromium)
+                                                       #5  0x000056295e090bb1 _ZN4base8internal12WorkerThread15RunPooledWorkerEv (chromium)
+                                                       #6  0x000056295e0df2f8 _ZN4base12_GLOBAL__N_110ThreadFuncEPv$d057525a39469bd043963c96d8725723.cfi (chromium)
+                                                       #7  0x00007fdd44cae57f start_thread (libpthread.so.0)
+                                                       #8  0x00007fdd41c3c0e3 __clone (libc.so.6)
+
+                                                       Stack trace of thread 20506:
+                                                       #0  0x00007fdd44cb477c pthread_cond_timedwait@@GLIBC_2.3.2 (libpthread.so.0)
+                                                       #1  0x000056295e0d355b _ZN4base17ConditionVariable9TimedWaitERKNS_9TimeDeltaE (chromium)
+                                                       #2  0x000056295e0d3b4d _ZN4base13WaitableEvent14TimedWaitUntilERKNS_9TimeTicksE (chromium)
+                                                       #3  0x000056295e0d3dae _ZN4base13WaitableEvent9TimedWaitERKNS_9TimeDeltaE (chromium)
+                                                       #4  0x000056295e09139e _ZN4base8internal12WorkerThread9RunWorkerEv (chromium)
+                                                       #5  0x000056295e090bb1 _ZN4base8internal12WorkerThread15RunPooledWorkerEv (chromium)
+                                                       #6  0x000056295e0df2f8 _ZN4base12_GLOBAL__N_110ThreadFuncEPv$d057525a39469bd043963c96d8725723.cfi (chromium)
+                                                       #7  0x00007fdd44cae57f start_thread (libpthread.so.0)
+                                                       #8  0x00007fdd41c3c0e3 __clone (libc.so.6)
+
+                                                       Stack trace of thread 20536:
+                                                       #0  0x00007fdd44cb4415 pthread_cond_wait@@GLIBC_2.3.2 (libpthread.so.0)
+                                                       #1  0x000056295e0d3d2b _ZN4base13WaitableEvent14TimedWaitUntilERKNS_9TimeTicksE (chromium)
+                                                       #2  0x000056295e0c908c _ZN4base13WaitableEvent4WaitEv (chromium)
+                                                       #3  0x000056295e032396 _ZN4base18MessagePumpDefault3RunEPNS_11MessagePump8DelegateE (chromium)
+                                                       #4  0x000056295e08385f _ZN4base16sequence_manager8internal35ThreadControllerWithMessagePumpImpl3RunEbNS_9TimeDeltaE (chromium)
+                                                       #5  0x000056295e0572b6 _ZN4base7RunLoop14RunWithTimeoutENS_9TimeDeltaE (chromium)
+                                                       #6  0x000056295e0984bd _ZN4base6Thread10ThreadMainEv (chromium)
+                                                       #7  0x000056295e0df2f8 _ZN4base12_GLOBAL__N_110ThreadFuncEPv$d057525a39469bd043963c96d8725723.cfi (chromium)
+                                                       #8  0x00007fdd44cae57f start_thread (libpthread.so.0)
+                                                       #9  0x00007fdd41c3c0e3 __clone (libc.so.6)
+
+                                                       Stack trace of thread 20625:
+                                                       #0  0x00007fdd44cb477c pthread_cond_timedwait@@GLIBC_2.3.2 (libpthread.so.0)
+                                                       #1  0x000056295e0d355b _ZN4base17ConditionVariable9TimedWaitERKNS_9TimeDeltaE (chromium)
+                                                       #2  0x000056295e0d3b4d _ZN4base13WaitableEvent14TimedWaitUntilERKNS_9TimeTicksE (chromium)
+                                                       #3  0x000056295e0d3dae _ZN4base13WaitableEvent9TimedWaitERKNS_9TimeDeltaE (chromium)
+                                                       #4  0x000056295e09139e _ZN4base8internal12WorkerThread9RunWorkerEv (chromium)
+                                                       #5  0x000056295e090bb1 _ZN4base8internal12WorkerThread15RunPooledWorkerEv (chromium)
+                                                       #6  0x000056295e0df2f8 _ZN4base12_GLOBAL__N_110ThreadFuncEPv$d057525a39469bd043963c96d8725723.cfi (chromium)
+                                                       #7  0x00007fdd44cae57f start_thread (libpthread.so.0)
+                                                       #8  0x00007fdd41c3c0e3 __clone (libc.so.6)
+
+                                                       Stack trace of thread 20627:
+                                                       #0  0x00007fdd44cb477c pthread_cond_timedwait@@GLIBC_2.3.2 (libpthread.so.0)
+                                                       #1  0x000056295e0d355b _ZN4base17ConditionVariable9TimedWaitERKNS_9TimeDeltaE (chromium)
+                                                       #2  0x000056295e0d3b4d _ZN4base13WaitableEvent14TimedWaitUntilERKNS_9TimeTicksE (chromium)
+                                                       #3  0x000056295e0d3dae _ZN4base13WaitableEvent9TimedWaitERKNS_9TimeDeltaE (chromium)
+                                                       #4  0x000056295e09139e _ZN4base8internal12WorkerThread9RunWorkerEv (chromium)
+                                                       #5  0x000056295e090bb1 _ZN4base8internal12WorkerThread15RunPooledWorkerEv (chromium)
+                                                       #6  0x000056295e0df2f8 _ZN4base12_GLOBAL__N_110ThreadFuncEPv$d057525a39469bd043963c96d8725723.cfi (chromium)
+                                                       #7  0x00007fdd44cae57f start_thread (libpthread.so.0)
+                                                       #8  0x00007fdd41c3c0e3 __clone (libc.so.6)
+
+                                                       Stack trace of thread 20371:
+                                                       #0  0x00007fdd41c3c41e epoll_wait (libc.so.6)
+                                                       #1  0x000056295e14360b epoll_dispatch$fa565fa3c1e953c9ae4ecee0ae4a3ca0.cfi (chromium)
+                                                       #2  0x000056295e140da6 event_base_loop (chromium)
+                                                       #3  0x000056295e0dc125 _ZN4base19MessagePumpLibevent3RunEPNS_11MessagePump8DelegateE (chromium)
+                                                       #4  0x000056295e08385f _ZN4base16sequence_manager8internal35ThreadControllerWithMessagePumpImpl3RunEbNS_9TimeDeltaE (chromium)
+                                                       #5  0x000056295e0572b6 _ZN4base7RunLoop14RunWithTimeoutENS_9TimeDeltaE (chromium)
+                                                       #6  0x000056295e0879d4 _ZN4base8internal13ServiceThread3RunEPNS_7RunLoopE (chromium)
+                                                       #7  0x000056295e0984bd _ZN4base6Thread10ThreadMainEv (chromium)
+                                                       #8  0x000056295e0df2f8 _ZN4base12_GLOBAL__N_110ThreadFuncEPv$d057525a39469bd043963c96d8725723.cfi (chromium)
+                                                       #9  0x00007fdd44cae57f start_thread (libpthread.so.0)
+                                                       #10 0x00007fdd41c3c0e3 __clone (libc.so.6)
+
+                                                       Stack trace of thread 21086:
+                                                       #0  0x00007fdd44cb4415 pthread_cond_wait@@GLIBC_2.3.2 (libpthread.so.0)
+                                                       #1  0x000056295e0d3d2b _ZN4base13WaitableEvent14TimedWaitUntilERKNS_9TimeTicksE (chromium)
+                                                       #2  0x000056295e0c908c _ZN4base13WaitableEvent4WaitEv (chromium)
+                                                       #3  0x000056295f5c3583 _ZN6syncer10HttpBridge19MakeSynchronousPostEPiS1_ (chromium)
+                                                       #4  0x000056295f5e8215 _ZN6syncer21SyncBridgedConnection4InitEPKcRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESA_PNS_12HttpResponseE (chromium)
+                                                       #5  0x000056295f5e79b4 _ZN6syncer23ServerConnectionManager16PostBufferToPathEPNS0_16PostBufferParamsERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESA_ (chromium)
+                                                       #6  0x000056295f5e7864 _ZN6syncer23ServerConnectionManager24PostBufferWithCachedAuthEPNS0_16PostBufferParamsE (chromium)
+                                                       #7  0x000056295f5fe9d7 _ZN6syncer15SyncerProtoUtil25PostClientToServerMessageERKN7sync_pb21ClientToServerMessageEPNS1_22ClientToServerResponseEPNS_9SyncCycleEPNS_7EnumSetINS_9ModelTypeELSA_2ELSA_45EEE (chromium)
+                                                       #8  0x000056295f5d7b2f _ZN6syncer19GetUpdatesProcessor15DownloadUpdatesEPNS_7EnumSetINS_9ModelTypeELS2_2ELS2_45EEEPNS_9SyncCycleE (chromium)
+                                                       #9  0x000056295f5fdeee _ZN6syncer6Syncer23DownloadAndApplyUpdatesEPNS_7EnumSetINS_9ModelTypeELS2_2ELS2_45EEEPNS_9SyncCycleERKNS_18GetUpdatesDelegateE (chromium)
+                                                       #10 0x000056295f5fdb66 _ZN6syncer6Syncer15NormalSyncShareENS_7EnumSetINS_9ModelTypeELS2_2ELS2_45EEEPNS_12NudgeTrackerEPNS_9SyncCycleE (chromium)
+                                                       #11 0x000056295f5fcd7d _ZN6syncer17SyncSchedulerImpl19TrySyncCycleJobImplEv (chromium)
+                                                       #12 0x000056295e071e37 _ZN4base13TaskAnnotator7RunTaskEPKcPNS_11PendingTaskE (chromium)
+                                                       #13 0x000056295e082f24 _ZN4base16sequence_manager8internal35ThreadControllerWithMessagePumpImpl10DoWorkImplEPNS0_7LazyNowEPb (chromium)
+                                                       #14 0x000056295e082b7b _ZN4base16sequence_manager8internal35ThreadControllerWithMessagePumpImpl10DoSomeWorkEv (chromium)
+                                                       #15 0x000056295e032355 _ZN4base18MessagePumpDefault3RunEPNS_11MessagePump8DelegateE (chromium)
+                                                       #16 0x000056295e08385f _ZN4base16sequence_manager8internal35ThreadControllerWithMessagePumpImpl3RunEbNS_9TimeDeltaE (chromium)
+                                                       #17 0x000056295e0572b6 _ZN4base7RunLoop14RunWithTimeoutENS_9TimeDeltaE (chromium)
+                                                       #18 0x000056295e0984bd _ZN4base6Thread10ThreadMainEv (chromium)
+                                                       #19 0x000056295e0df2f8 _ZN4base12_GLOBAL__N_110ThreadFuncEPv$d057525a39469bd043963c96d8725723.cfi (chromium)
+                                                       #20 0x00007fdd44cae57f start_thread (libpthread.so.0)
+                                                       #21 0x00007fdd41c3c0e3 __clone (libc.so.6)
+
+                                                       Stack trace of thread 20370:
+                                                       #0  0x00007fdd44cb8636 waitpid (libpthread.so.0)
+                                                       #1  0x000056295e0d030d _ZNK4base7Process22WaitForExitWithTimeoutENS_9TimeDeltaEPi (chromium)
+                                                       #2  0x000056295e0deeef _ZN4base12_GLOBAL__N_116BackgroundReaper10ThreadMainEv$d057525a39469bd043963c96d8725723 (chromium)
+                                                       #3  0x000056295e0df2f8 _ZN4base12_GLOBAL__N_110ThreadFuncEPv$d057525a39469bd043963c96d8725723.cfi (chromium)
+                                                       #4  0x00007fdd44cae57f start_thread (libpthread.so.0)
+                                                       #5  0x00007fdd41c3c0e3 __clone (libc.so.6)
+
+                                                       Stack trace of thread 20380:
+                                                       #0  0x00007fdd44cb477c pthread_cond_timedwait@@GLIBC_2.3.2 (libpthread.so.0)
+                                                       #1  0x000056295e0d355b _ZN4base17ConditionVariable9TimedWaitERKNS_9TimeDeltaE (chromium)
+                                                       #2  0x000056295e0d3b4d _ZN4base13WaitableEvent14TimedWaitUntilERKNS_9TimeTicksE (chromium)
+                                                       #3  0x000056295e0d3dae _ZN4base13WaitableEvent9TimedWaitERKNS_9TimeDeltaE (chromium)
+                                                       #4  0x000056295e09139e _ZN4base8internal12WorkerThread9RunWorkerEv (chromium)
+                                                       #5  0x000056295e090bb1 _ZN4base8internal12WorkerThread15RunPooledWorkerEv (chromium)
+                                                       #6  0x000056295e0df2f8 _ZN4base12_GLOBAL__N_110ThreadFuncEPv$d057525a39469bd043963c96d8725723.cfi (chromium)
+                                                       #7  0x00007fdd44cae57f start_thread (libpthread.so.0)
+                                                       #8  0x00007fdd41c3c0e3 __clone (libc.so.6)
+
+                                                       Stack trace of thread 20507:
+                                                       #0  0x00007fdd44cb477c pthread_cond_timedwait@@GLIBC_2.3.2 (libpthread.so.0)
+                                                       #1  0x000056295e0d355b _ZN4base17ConditionVariable9TimedWaitERKNS_9TimeDeltaE (chromium)
+                                                       #2  0x000056295e0d3b4d _ZN4base13WaitableEvent14TimedWaitUntilERKNS_9TimeTicksE (chromium)
+                                                       #3  0x000056295e0d3dae _ZN4base13WaitableEvent9TimedWaitERKNS_9TimeDeltaE (chromium)
+                                                       #4  0x000056295e09139e _ZN4base8internal12WorkerThread9RunWorkerEv (chromium)
+                                                       #5  0x000056295e090bb1 _ZN4base8internal12WorkerThread15RunPooledWorkerEv (chromium)
+                                                       #6  0x000056295e0df2f8 _ZN4base12_GLOBAL__N_110ThreadFuncEPv$d057525a39469bd043963c96d8725723.cfi (chromium)
+                                                       #7  0x00007fdd44cae57f start_thread (libpthread.so.0)
+                                                       #8  0x00007fdd41c3c0e3 __clone (libc.so.6)
+
+                                                       Stack trace of thread 20624:
+                                                       #0  0x00007fdd44cb477c pthread_cond_timedwait@@GLIBC_2.3.2 (libpthread.so.0)
+                                                       #1  0x000056295e0d355b _ZN4base17ConditionVariable9TimedWaitERKNS_9TimeDeltaE (chromium)
+                                                       #2  0x000056295e0d3b4d _ZN4base13WaitableEvent14TimedWaitUntilERKNS_9TimeTicksE (chromium)
+                                                       #3  0x000056295e0d3dae _ZN4base13WaitableEvent9TimedWaitERKNS_9TimeDeltaE (chromium)
+                                                       #4  0x000056295e09139e _ZN4base8internal12WorkerThread9RunWorkerEv (chromium)
+                                                       #5  0x000056295e090bb1 _ZN4base8internal12WorkerThread15RunPooledWorkerEv (chromium)
+                                                       #6  0x000056295e0df2f8 _ZN4base12_GLOBAL__N_110ThreadFuncEPv$d057525a39469bd043963c96d8725723.cfi (chromium)
+                                                       #7  0x00007fdd44cae57f start_thread (libpthread.so.0)
+                                                       #8  0x00007fdd41c3c0e3 __clone (libc.so.6)
+
+                                                       Stack trace of thread 20626:
+                                                       #0  0x00007fdd44cb477c pthread_cond_timedwait@@GLIBC_2.3.2 (libpthread.so.0)
+                                                       #1  0x000056295e0d355b _ZN4base17ConditionVariable9TimedWaitERKNS_9TimeDeltaE (chromium)
+                                                       #2  0x000056295e0d3b4d _ZN4base13WaitableEvent14TimedWaitUntilERKNS_9TimeTicksE (chromium)
+                                                       #3  0x000056295e0d3dae _ZN4base13WaitableEvent9TimedWaitERKNS_9TimeDeltaE (chromium)
+                                                       #4  0x000056295e09139e _ZN4base8internal12WorkerThread9RunWorkerEv (chromium)
+                                                       #5  0x000056295e090bb1 _ZN4base8internal12WorkerThread15RunPooledWorkerEv (chromium)
+                                                       #6  0x000056295e0df2f8 _ZN4base12_GLOBAL__N_110ThreadFuncEPv$d057525a39469bd043963c96d8725723.cfi (chromium)
+                                                       #7  0x00007fdd44cae57f start_thread (libpthread.so.0)
+                                                       #8  0x00007fdd41c3c0e3 __clone (libc.so.6)
+
+                                                       Stack trace of thread 20387:
+                                                       #0  0x00007fdd41c09414 __libc_fork (libc.so.6)
+                                                       #1  0x000056295e0d0ca3 _ZN4base13LaunchProcessERKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS6_EERKNS_13LaunchOptionsE (chromium)
+                                                       #2  0x000056295e0d086e _ZN4base13LaunchProcessERKNS_11CommandLineERKNS_13LaunchOptionsE (chromium)
+                                                       #3  0x000056295c3c2b68 _ZN7content8internal26ChildProcessLauncherHelper22LaunchOnLauncherThreadEv (chromium)
+                                                       #4  0x000056295e071e37 _ZN4base13TaskAnnotator7RunTaskEPKcPNS_11PendingTaskE (chromium)
+                                                       #5  0x000056295e08995f _ZN4base8internal11TaskTracker16RunBlockShutdownEPNS0_4TaskE (chromium)
+                                                       #6  0x000056295e0892d9 _ZN4base8internal11TaskTracker13RunOrSkipTaskENS0_4TaskEPNS0_10TaskSourceERKNS_10TaskTraitsEb (chromium)
+                                                       #7  0x000056295e0d5b72 _ZN4base8internal16TaskTrackerPosix13RunOrSkipTaskENS0_4TaskEPNS0_10TaskSourceERKNS_10TaskTraitsEb (chromium)
+                                                       #8  0x000056295e091162 _ZN4base8internal12WorkerThread9RunWorkerEv (chromium)
+                                                       #9  0x000056295e090c51 _ZN4base8internal12WorkerThread18RunDedicatedWorkerEv (chromium)
+                                                       #10 0x000056295e0df2f8 _ZN4base12_GLOBAL__N_110ThreadFuncEPv$d057525a39469bd043963c96d8725723.cfi (chromium)
+                                                       #11 0x00007fdd44cae57f start_thread (libpthread.so.0)
+                                                       #12 0x00007fdd41c3c0e3 __clone (libc.so.6)
+
+                                                       Stack trace of thread 20391:
+                                                       #0  0x00007fdd44cb477c pthread_cond_timedwait@@GLIBC_2.3.2 (libpthread.so.0)
+                                                       #1  0x000056295e0d355b _ZN4base17ConditionVariable9TimedWaitERKNS_9TimeDeltaE (chromium)
+                                                       #2  0x000056295e0d3b4d _ZN4base13WaitableEvent14TimedWaitUntilERKNS_9TimeTicksE (chromium)
+                                                       #3  0x000056295e0d3dae _ZN4base13WaitableEvent9TimedWaitERKNS_9TimeDeltaE (chromium)
+                                                       #4  0x000056295e0323ac _ZN4base18MessagePumpDefault3RunEPNS_11MessagePump8DelegateE (chromium)
+                                                       #5  0x000056295e08385f _ZN4base16sequence_manager8internal35ThreadControllerWithMessagePumpImpl3RunEbNS_9TimeDeltaE (chromium)
+                                                       #6  0x000056295e0572b6 _ZN4base7RunLoop14RunWithTimeoutENS_9TimeDeltaE (chromium)
+                                                       #7  0x000056295e0984bd _ZN4base6Thread10ThreadMainEv (chromium)
+                                                       #8  0x000056295e0df2f8 _ZN4base12_GLOBAL__N_110ThreadFuncEPv$d057525a39469bd043963c96d8725723.cfi (chromium)
+                                                       #9  0x00007fdd44cae57f start_thread (libpthread.so.0)
+                                                       #10 0x00007fdd41c3c0e3 __clone (libc.so.6)
+
+                                                       Stack trace of thread 20390:
+                                                       #0  0x00007fdd41c3c41e epoll_wait (libc.so.6)
+                                                       #1  0x000056295e14360b epoll_dispatch$fa565fa3c1e953c9ae4ecee0ae4a3ca0.cfi (chromium)
+                                                       #2  0x000056295e140da6 event_base_loop (chromium)
+                                                       #3  0x000056295e0dc125 _ZN4base19MessagePumpLibevent3RunEPNS_11MessagePump8DelegateE (chromium)
+                                                       #4  0x000056295e08385f _ZN4base16sequence_manager8internal35ThreadControllerWithMessagePumpImpl3RunEbNS_9TimeDeltaE (chromium)
+                                                       #5  0x000056295e0572b6 _ZN4base7RunLoop14RunWithTimeoutENS_9TimeDeltaE (chromium)
+                                                       #6  0x000056295e0984bd _ZN4base6Thread10ThreadMainEv (chromium)
+                                                       #7  0x000056295e0df2f8 _ZN4base12_GLOBAL__N_110ThreadFuncEPv$d057525a39469bd043963c96d8725723.cfi (chromium)
+                                                       #8  0x00007fdd44cae57f start_thread (libpthread.so.0)
+                                                       #9  0x00007fdd41c3c0e3 __clone (libc.so.6)
+Jul 18 10:23:27 danielpc-arch systemd[1]: systemd-coredump@24-21111-0.service: Succeeded.
+Jul 18 10:23:27 danielpc-arch kernel: kauditd_printk_skb: 1 callbacks suppressed
+Jul 18 10:23:27 danielpc-arch kernel: audit: type=1131 audit(1563409407.409:131): pid=1 uid=0 auid=4294967295 ses=4294967295 msg='unit=systemd-coredump@24-21111-0 comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'

@@ -1,0 +1,27 @@
+$ chromium 
+[18520:18520:0615/142902.933464:ERROR:sandbox_linux.cc(368)] InitializeSandbox() called with multiple threads in process gpu-process.
+[18497:18497:0615/142902.975932:ERROR:global_shortcut_listener_ozone.cc(26)] GlobalShortcutListenerOzone object created
+[18497:18497:0615/142902.975953:ERROR:global_shortcut_listener_ozone.cc(48)] Not implemented reached in virtual bool extensions::GlobalShortcutListenerOzone::RegisterAcceleratorImpl(const ui::Accelerator &)
+[18497:18497:0615/142902.975967:ERROR:global_shortcut_listener_ozone.cc(48)] Not implemented reached in virtual bool extensions::GlobalShortcutListenerOzone::RegisterAcceleratorImpl(const ui::Accelerator &)
+[18497:18497:0615/142902.975974:ERROR:global_shortcut_listener_ozone.cc(48)] Not implemented reached in virtual bool extensions::GlobalShortcutListenerOzone::RegisterAcceleratorImpl(const ui::Accelerator &)
+[18497:18497:0615/142902.975981:ERROR:global_shortcut_listener_ozone.cc(48)] Not implemented reached in virtual bool extensions::GlobalShortcutListenerOzone::RegisterAcceleratorImpl(const ui::Accelerator &)
+[18497:18497:0615/142903.025970:ERROR:desktop_window_tree_host_platform.cc(446)] Not implemented reached in virtual void views::DesktopWindowTreeHostPlatform::InitModalType(ui::ModalType)
+[18497:18497:0615/142903.025999:ERROR:desktop_window_tree_host_platform.cc(456)] Not implemented reached in virtual bool views::DesktopWindowTreeHostPlatform::IsAnimatingClosed() const
+[18497:18497:0615/142903.030105:ERROR:desktop_window_tree_host_platform.cc(469)] Not implemented reached in virtual void views::DesktopWindowTreeHostPlatform::SizeConstraintsChanged()
+[18497:18497:0615/142903.060169:ERROR:desktop_window_tree_host_platform.cc(440)] Not implemented reached in virtual void views::DesktopWindowTreeHostPlatform::SetWindowIcons(const gfx::ImageSkia &, const gfx::ImageSkia &)
+[18497:18497:0615/142903.060194:ERROR:desktop_window_tree_host_platform.cc(372)] Not implemented reached in virtual bool views::DesktopWindowTreeHostPlatform::SetWindowTitle(const base::string16 &)
+[18497:18497:0615/142903.067020:ERROR:desktop_window_tree_host_platform.cc(310)] Not implemented reached in virtual void views::DesktopWindowTreeHostPlatform::Activate()
+[18497:18497:0615/142903.093015:ERROR:desktop_window_tree_host_platform.cc(227)] Not implemented reached in virtual bool views::DesktopWindowTreeHostPlatform::IsVisible() const
+[18497:18497:0615/142903.194591:ERROR:desktop_window_tree_host_platform.cc(378)] Not implemented reached in virtual void views::DesktopWindowTreeHostPlatform::ClearNativeFocus()
+[18497:18497:0615/142903.402572:ERROR:window_tree_host_platform.cc(198)] Not implemented reached in virtual void aura::WindowTreeHostPlatform::OnCursorVisibilityChangedNative(bool)
+[18497:18497:0615/142903.402654:ERROR:window_tree_host_platform.cc(198)] Not implemented reached in virtual void aura::WindowTreeHostPlatform::OnCursorVisibilityChangedNative(bool)
+[18497:18762:0615/142903.792251:ERROR:device_id_linux.cc(88)] Could not find appropriate disk uuid.
+[18497:18762:0615/142903.792267:ERROR:device_id_linux.cc(91)]   DeviceID=nvme0n1p1, uuid=D923-B1E1
+[18497:18762:0615/142903.792275:ERROR:device_id_linux.cc(91)]   DeviceID=nvme0n1p3, uuid=5a4f125a-ba29-446e-b688-d81ec60845d2
+[18497:18762:0615/142903.792284:ERROR:device_id_linux.cc(91)]   DeviceID=nvme0n1p4, uuid=EEBA0259BA021F29
+[18497:18762:0615/142903.792289:ERROR:device_id_linux.cc(91)]   DeviceID=nvme0n1p5, uuid=1482700A826FEF24
+[18497:18762:0615/142903.792294:ERROR:device_id_linux.cc(91)]   DeviceID=nvme0n1p6, uuid=f117bd77-0be6-48ac-bb05-41a06cf1fc3e
+[18497:18497:0615/142906.256979:ERROR:window_tree_host_platform.cc(198)] Not implemented reached in virtual void aura::WindowTreeHostPlatform::OnCursorVisibilityChangedNative(bool)
+[18497:18497:0615/142906.257368:ERROR:window_tree_host_platform.cc(198)] Not implemented reached in virtual void aura::WindowTreeHostPlatform::OnCursorVisibilityChangedNative(bool)
+[18497:18497:0615/142914.780239:ERROR:desktop_window_tree_host_platform.cc(243)] Not implemented reached in virtual void views::DesktopWindowTreeHostPlatform::StackAtTop()
+[18497:18497:0615/142918.256432:ERROR:desktop_window_tree_host_platform.cc(268)] Not implemented reached in virtual void views::DesktopWindowTreeHostPlatform::GetWindowPlacement(gfx::Rect *, ui::WindowShowState *) const
