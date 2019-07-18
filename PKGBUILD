@@ -5,7 +5,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium-ozone
-pkgver=75.0.3770.100
+pkgver=77.0.3849.0
 pkgrel=1
 _launcher_ver=6
 _meta_browser_sha=f24753238414a8b04e5227772f22bb4dd9171b2f
@@ -34,13 +34,13 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         chromium-skia-harmony.patch
         https://git.nightly.network/Exherbo/desktop/raw/de0a391d9e7442dce614553835ef599119826387/packages/net-www/chromium-stable/files/chromium-remove-const.patch
         Added-HiDPI-support-for-Ozone-Wayland.patch)
-sha256sums=('9e1360101b6d9f9635e540db77626e3e15b452f413d8750518244ac37b73fca0'
+sha256sums=('feda812438859c3636c21eb86c15146fcc13aa43c639eaacc2f70b886beba8d1'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
             'e7ead0cdb341819adb52082aed1ae674e243944fbf23456ab9ca60f4c4baefe5'
             'e2d284311f49c529ea45083438a768db390bde52949995534034d2a814beab89'
             '183d8cc712f0bcf1afcb01ce90c4c104a4c8d8070a06f94974a28b007d9e2ce4'
             'd081f2ef8793544685aad35dea75a7e6264a2cb987ff3541e6377f4a3650a28b'
-            '5887f78b55c4ecbbcba5930f3f0bb7bc0117c2a41c2f761805fcf7f46f1ca2b3'
+            '0dd2fea50a93b26debce63c762c0291737b61816ba5b127ef923999494142b78'
             '005f7db8acc774e2c66f99d900f2263abf495ccd5eda33c45a957fce2ed30f8d'
             'b6b258a6d3b42731c9375395b4e6e896edef00617d5b7028c348a5d2dbb14eb7')
 
@@ -51,8 +51,8 @@ declare -gA _system_libs=(
   [flac]=flac
   [fontconfig]=fontconfig
   [freetype]=freetype2
-  [harfbuzz-ng]=harfbuzz
-  [icu]=icu
+  # [harfbuzz-ng]=harfbuzz
+  # [icu]=icu
   [libdrm]=
   [libjpeg]=libjpeg
   #[libpng]=libpng            # https://crbug.com/752403#c10
@@ -64,7 +64,7 @@ declare -gA _system_libs=(
   [re2]=re2
   [snappy]=snappy
   [yasm]=
-  [zlib]=minizip
+  # [zlib]=minizip
 )
 _unwanted_bundled_libs=(
   ${!_system_libs[@]}
@@ -141,8 +141,8 @@ prepare() {
     third_party/blink/renderer/core/xml/parser/xml_document_parser.cc \
     third_party/libxml/chromium/libxml_utils.cc
 
-  # https://crbug.com/956061
-  patch -Np1 -i ../chromium-fix-window-flash-for-some-WMs.patch
+  # # https://crbug.com/956061
+  # patch -Np1 -i ../chromium-fix-window-flash-for-some-WMs.patch
 
   # Load Widevine CDM if available
   patch -Np1 -i ../chromium-widevine.patch
@@ -150,27 +150,27 @@ prepare() {
   # https://crbug.com/skia/6663#c10
   patch -Np0 -i ../chromium-skia-harmony.patch
 
-  # https://bugs.gentoo.org/661880#c21
-  patch -Np1 -i ../chromium-system-icu.patch
+  # # https://bugs.gentoo.org/661880#c21
+  # patch -Np1 -i ../chromium-system-icu.patch
 
-  # https://github.com/ungoogled-software/ungoogled-chromium-debian/issues/7
-  patch -Np1 -i ../chromium-remove-const.patch
+  # # https://github.com/ungoogled-software/ungoogled-chromium-debian/issues/7
+  # patch -Np1 -i ../chromium-remove-const.patch
 
-  # chromium-ozone-wayland
-  for PATCH in ${_general_patches[@]}
-  do
-    echo "Applying $PATCH"
-    patch -Np1 -i $srcdir/meta-browser-${_meta_browser_sha}/recipes-browser/chromium/files/${PATCH}
-  done
+  # # chromium-ozone-wayland
+  # for PATCH in ${_general_patches[@]}
+  # do
+  #   echo "Applying $PATCH"
+  #   patch -Np1 -i $srcdir/meta-browser-${_meta_browser_sha}/recipes-browser/chromium/files/${PATCH}
+  # done
 
-  for PATCH in ${_wayland_patches[@]}
-  do
-    echo "Applying $PATCH"
-    patch -Np1 -i $srcdir/meta-browser-${_meta_browser_sha}/recipes-browser/chromium/chromium-ozone-wayland/${PATCH}
-  done
+  # for PATCH in ${_wayland_patches[@]}
+  # do
+  #   echo "Applying $PATCH"
+  #   patch -Np1 -i $srcdir/meta-browser-${_meta_browser_sha}/recipes-browser/chromium/chromium-ozone-wayland/${PATCH}
+  # done
 
-  # https://chromium-review.googlesource.com/c/chromium/src/+/1647154
-  patch -Np1 -i ../Added-HiDPI-support-for-Ozone-Wayland.patch
+  # # https://chromium-review.googlesource.com/c/chromium/src/+/1647154
+  # patch -Np1 -i ../Added-HiDPI-support-for-Ozone-Wayland.patch
 
   # Remove compiler flags not supported by our system clang
   sed -i \
@@ -303,7 +303,7 @@ package() {
     cp out/Release/icudtl.dat "$pkgdir/usr/lib/chromium/"
   fi
 
-  for size in 22 24 48 64 128 256; do
+  for size in 22_mono 24 48 64 128 256; do
     install -Dm644 "chrome/app/theme/chromium/product_logo_$size.png" \
       "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/chromium.png"
   done
