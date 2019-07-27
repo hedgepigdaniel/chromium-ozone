@@ -5,7 +5,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium-ozone
-pkgver=77.0.3849.0
+pkgver=77.0.3860.5
 pkgrel=1
 _launcher_ver=6
 _meta_browser_sha=f24753238414a8b04e5227772f22bb4dd9171b2f
@@ -32,15 +32,19 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         chromium-fix-window-flash-for-some-WMs.patch
         chromium-widevine.patch
         chromium-skia-harmony.patch
+        chromium-mutex-surfaces-map.patch
+        chromium-sway-presentation.patch
         https://git.nightly.network/Exherbo/desktop/raw/de0a391d9e7442dce614553835ef599119826387/packages/net-www/chromium-stable/files/chromium-remove-const.patch
         Added-HiDPI-support-for-Ozone-Wayland.patch)
-sha256sums=('feda812438859c3636c21eb86c15146fcc13aa43c639eaacc2f70b886beba8d1'
+sha256sums=('dc068cf0c8fb1bdf4b0998f1c8c1254701ac70f9ee540face10ff7c6b82d6297'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
             'e7ead0cdb341819adb52082aed1ae674e243944fbf23456ab9ca60f4c4baefe5'
             'e2d284311f49c529ea45083438a768db390bde52949995534034d2a814beab89'
             '183d8cc712f0bcf1afcb01ce90c4c104a4c8d8070a06f94974a28b007d9e2ce4'
             'd081f2ef8793544685aad35dea75a7e6264a2cb987ff3541e6377f4a3650a28b'
             '0dd2fea50a93b26debce63c762c0291737b61816ba5b127ef923999494142b78'
+            '84c5bca1824555a2fde9baf08518578b26db9f14ff6d519e5485f6ce982f7c8d'
+            '279b9558a466d96bc7dcba96a9f41efaed98ede1cd69e1562689ee4409940fe8'
             '005f7db8acc774e2c66f99d900f2263abf495ccd5eda33c45a957fce2ed30f8d'
             'b6b258a6d3b42731c9375395b4e6e896edef00617d5b7028c348a5d2dbb14eb7')
 
@@ -169,6 +173,8 @@ prepare() {
   #   patch -Np1 -i $srcdir/meta-browser-${_meta_browser_sha}/recipes-browser/chromium/chromium-ozone-wayland/${PATCH}
   # done
 
+  patch -Np1 -i ../chromium-sway-presentation.patch
+
   # # https://chromium-review.googlesource.com/c/chromium/src/+/1647154
   # patch -Np1 -i ../Added-HiDPI-support-for-Ozone-Wayland.patch
 
@@ -241,6 +247,7 @@ build() {
     'use_system_libwayland=true'
     'use_system_minigbm=true'
     'use_system_libdrm=true'
+    'use_wayland_gbm=false'
     'use_vaapi=false'
     'use_jumbo_build=true'
     'enable_nacl=false'
